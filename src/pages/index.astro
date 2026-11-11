@@ -2,7 +2,38 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog'))
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+	.slice(0, 3);
+
+// Golden Gate-style suspension bridge, drawn in a 1200 x 400 scene.
+const towerL = 380;
+const towerR = 820;
+const towerTop = 95;
+const deckY = 250;
+const sag = 300; // control point for the main-span cable curve
+
+// Point on the main cable (quadratic Bézier) for a given x between the towers.
+const mainCableY = (x: number) => {
+	const t = (x - towerL) / (towerR - towerL);
+	return (1 - t) ** 2 * towerTop + 2 * (1 - t) * t * sag + t ** 2 * towerTop;
+};
+// Side spans run straight-ish from the tower tops down to the shore anchors.
+const sideCableY = (x: number) =>
+	x < towerL
+		? deckY - 15 - ((x - 0) / towerL) * (deckY - 15 - towerTop)
+		: towerTop + ((x - towerR) / (1200 - towerR)) * (deckY - 15 - towerTop);
+
+const suspenders: { x: number; y: number }[] = [];
+for (let x = 20; x < 1200; x += 20) {
+	if (Math.abs(x - towerL) < 14 || Math.abs(x - towerR) < 14) continue;
+	const y = x > towerL && x < towerR ? mainCableY(x) : sideCableY(x);
+	suspenders.push({ x, y });
+}
 ---
 
 <!doctype html>
@@ -12,39 +43,357 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 	</head>
 	<body>
 		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to <a href="https://docs.astro.build/"
-					>read the docs
-				</a> or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out <a
-					href="https://github.com/Charca/astro-blog-template"
-					>astro-blog-template
-				</a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
+
+		<section class="hero" aria-labelledby="hero-title">
+			<div class="hero-text">
+				<p class="coords">37.7749° N &nbsp;·&nbsp; 122.4194° W</p>
+				<h1 id="hero-title">Hi, I'm Brittany.</h1>
+				<p class="lede">
+					Writing, projects and notes from San Francisco: somewhere between the fog, the hills
+					and the bay.
+				</p>
+				<div class="actions">
+					<a class="button primary" href="/blog">Read the blog</a>
+					<a class="button ghost" href="/about">About me</a>
+				</div>
+			</div>
+			<svg class="scene" viewBox="0 40 1200 360" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+				<defs>
+					<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+						<stop offset="0" stop-color="#dfe4ea"></stop>
+						<stop offset="0.55" stop-color="#f3e3d3"></stop>
+						<stop offset="1" stop-color="#f4c7a1"></stop>
+					</linearGradient>
+					<linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+						<stop offset="0" stop-color="#3b5b7f"></stop>
+						<stop offset="1" stop-color="#1f3a5f"></stop>
+					</linearGradient>
+					<filter id="blur" x="-20%" y="-50%" width="140%" height="200%">
+						<feGaussianBlur stdDeviation="14"></feGaussianBlur>
+					</filter>
+				</defs>
+
+				<rect width="1200" height="400" fill="url(#sky)"></rect>
+				<circle cx="960" cy="150" r="46" fill="#f8d9b8" opacity="0.9"></circle>
+
+				<!-- Marin Headlands and the city's hills -->
+				<path d="M560 270 Q700 150 860 205 Q980 160 1200 225 V300 H560 Z" fill="#8a9a8c" opacity="0.55"></path>
+				<path d="M0 255 Q120 215 250 240 Q330 225 400 262 V300 H0 Z" fill="#7d8a82" opacity="0.6"></path>
+
+				<!-- Fog rolling in behind the bridge -->
+				<g class="fog fog-back" filter="url(#blur)">
+					<ellipse cx="300" cy="215" rx="260" ry="26" fill="#fff" opacity="0.75"></ellipse>
+					<ellipse cx="900" cy="230" rx="320" ry="30" fill="#fff" opacity="0.7"></ellipse>
+				</g>
+
+				<!-- Water -->
+				<rect y="262" width="1200" height="138" fill="url(#water)"></rect>
+				<g stroke="#ffffff" stroke-opacity="0.18" stroke-width="2" stroke-linecap="round">
+					<line x1="120" y1="300" x2="190" y2="300"></line>
+					<line x1="520" y1="330" x2="610" y2="330"></line>
+					<line x1="900" y1="312" x2="960" y2="312"></line>
+					<line x1="1040" y1="356" x2="1120" y2="356"></line>
+					<line x1="280" y1="372" x2="360" y2="372"></line>
+				</g>
+
+				<!-- The bridge -->
+				<g class="bridge">
+					<g class="suspenders" stroke-width="1.4">
+						{suspenders.map((s) => <line x1={s.x} y1={s.y} x2={s.x} y2={deckY} />)}
+					</g>
+					<path
+						class="cable"
+						d={`M0 ${deckY - 15} L${towerL} ${towerTop} Q600 ${sag} ${towerR} ${towerTop} L1200 ${deckY - 15}`}
+						fill="none"
+						stroke-width="4"
+					></path>
+					<rect x="0" y={deckY} width="1200" height="9"></rect>
+					{
+						[towerL, towerR].map((x) => (
+							<g>
+								<rect x={x - 12} y={towerTop - 10} width="8" height={262 - towerTop + 10 + 40} />
+								<rect x={x + 4} y={towerTop - 10} width="8" height={262 - towerTop + 10 + 40} />
+								<rect x={x - 14} y={towerTop + 6} width="28" height="6" />
+								<rect x={x - 14} y={towerTop + 50} width="28" height="6" />
+								<rect x={x - 14} y={towerTop + 100} width="28" height="6" />
+								<rect x={x - 14} y={deckY - 30} width="28" height="6" />
+							</g>
+						))
+					}
+				</g>
+
+				<!-- Low fog drifting in front -->
+				<g class="fog fog-front" filter="url(#blur)">
+					<ellipse cx="160" cy="268" rx="240" ry="22" fill="#fff" opacity="0.65"></ellipse>
+					<ellipse cx="700" cy="282" rx="300" ry="20" fill="#fff" opacity="0.55"></ellipse>
+				</g>
+			</svg>
+		</section>
+
+		<main class="home">
+			<section class="latest" aria-labelledby="latest-title">
+				<div class="section-head">
+					<h2 id="latest-title">Latest from the blog</h2>
+					<a class="see-all" href="/blog">All posts →</a>
+				</div>
+				<ul class="cards">
+					{
+						posts.map((post) => (
+							<li>
+								<a href={`/blog/${post.id}/`}>
+									{post.data.heroImage && (
+										<img src={post.data.heroImage} alt="" width={720} height={360} loading="lazy" />
+									)}
+									<div class="card-body">
+										<p class="date">
+											<FormattedDate date={post.data.pubDate} />
+										</p>
+										<h3>{post.data.title}</h3>
+										<p class="desc">{post.data.description}</p>
+									</div>
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</section>
+
+			<section class="city" aria-label="San Francisco">
+				<div class="city-card">
+					<span class="tag">Local forecast</span>
+					<p>Fog in the morning, sun by the afternoon, layers at all times.</p>
+				</div>
+				<div class="city-card">
+					<span class="tag">Based in</span>
+					<p>San Francisco, California: 49 square miles, 40-something hills.</p>
+				</div>
+				<div class="city-card">
+					<span class="tag">Say hello</span>
+					<p>Read more <a href="/about">about me</a> or catch up on <a href="/blog">the blog</a>.</p>
+				</div>
+			</section>
 		</main>
+
 		<Footer />
 	</body>
 </html>
+
+<style>
+	/* ---------- Hero ---------- */
+	.hero {
+		position: relative;
+		overflow: hidden;
+		background: #dfe4ea;
+	}
+	.scene {
+		display: block;
+		width: 100%;
+		height: clamp(230px, 34vw, 440px);
+		margin-top: 0.5em;
+	}
+	.bridge {
+		fill: var(--accent);
+	}
+	.bridge .cable,
+	.bridge .suspenders {
+		stroke: var(--accent);
+	}
+	.fog {
+		animation: drift 38s ease-in-out infinite alternate;
+	}
+	.fog-front {
+		animation-duration: 26s;
+		animation-direction: alternate-reverse;
+	}
+	@keyframes drift {
+		from {
+			transform: translateX(-60px);
+		}
+		to {
+			transform: translateX(60px);
+		}
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.fog {
+			animation: none;
+		}
+	}
+	.hero-text {
+		position: relative;
+		z-index: 1;
+		width: 1080px;
+		max-width: calc(100% - 2em);
+		margin: 0 auto;
+		padding: clamp(2.5em, 7vh, 4.5em) 0 0;
+	}
+	.coords {
+		margin: 0 0 0.75em;
+		font-size: 0.75em;
+		font-weight: 700;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+		color: var(--accent-dark);
+	}
+	.hero h1 {
+		margin: 0 0 0.3em;
+		font-size: clamp(2.6rem, 7vw, 4.8rem);
+		line-height: 1.02;
+		color: rgb(var(--black));
+	}
+	.lede {
+		max-width: 30em;
+		margin: 0 0 1.5em;
+		font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+		color: rgb(var(--gray-dark));
+	}
+	.actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75em;
+	}
+	.button {
+		display: inline-block;
+		padding: 0.6em 1.25em;
+		border-radius: 999px;
+		font-size: 0.9em;
+		font-weight: 700;
+		text-decoration: none;
+		transition:
+			transform 0.15s ease,
+			background 0.15s ease;
+	}
+	.button:hover {
+		transform: translateY(-1px);
+	}
+	.button.primary {
+		background: var(--accent);
+		color: #fff;
+	}
+	.button.primary:hover {
+		background: var(--accent-dark);
+		color: #fff;
+	}
+	.button.ghost {
+		background: rgba(255, 255, 255, 0.7);
+		color: rgb(var(--black));
+		border: 1px solid rgba(var(--black), 0.15);
+	}
+	.button.ghost:hover {
+		background: #fff;
+		color: rgb(var(--black));
+	}
+
+	/* ---------- Latest posts ---------- */
+	main.home {
+		width: 1080px;
+		padding-top: 3.5em;
+	}
+	.section-head {
+		display: flex;
+		align-items: baseline;
+		justify-content: space-between;
+		gap: 1em;
+		margin-bottom: 1.25em;
+	}
+	.section-head h2 {
+		margin: 0;
+		font-size: 1.8em;
+	}
+	.see-all {
+		white-space: nowrap;
+		font-size: 0.85em;
+		font-weight: 700;
+		text-decoration: none;
+	}
+	.cards {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+		gap: 1.5em;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	.cards a {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+		overflow: hidden;
+		border-radius: 14px;
+		background: #fff;
+		border: 1px solid rgb(var(--gray-light));
+		color: inherit;
+		text-decoration: none;
+		transition:
+			transform 0.2s ease,
+			box-shadow 0.2s ease;
+	}
+	.cards a:hover {
+		transform: translateY(-3px);
+		box-shadow: var(--box-shadow);
+	}
+	.cards img {
+		display: block;
+		width: 100%;
+		aspect-ratio: 2 / 1;
+		object-fit: cover;
+		border-radius: 0;
+	}
+	.card-body {
+		padding: 1em 1.2em 1.3em;
+	}
+	.card-body .date {
+		margin: 0 0 0.3em;
+		font-size: 0.75em;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--accent);
+	}
+	.card-body h3 {
+		margin: 0 0 0.35em;
+		font-size: 1.25em;
+	}
+	.card-body .desc {
+		margin: 0;
+		font-size: 0.85em;
+		line-height: 1.55;
+		color: rgb(var(--gray));
+	}
+
+	/* ---------- City strip ---------- */
+	.city {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+		gap: 1em;
+		margin-top: 3.5em;
+	}
+	.city-card {
+		padding: 1.2em 1.3em;
+		border-radius: 14px;
+		background: var(--fog);
+		border-left: 4px solid var(--accent);
+	}
+	.city-card .tag {
+		display: block;
+		margin-bottom: 0.3em;
+		font-size: 0.72em;
+		font-weight: 700;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: rgb(var(--gray));
+	}
+	.city-card p {
+		margin: 0;
+		font-size: 0.9em;
+		line-height: 1.5;
+	}
+
+	@media (max-width: 720px) {
+		.section-head h2 {
+			font-size: 1.45em;
+		}
+		main.home {
+			padding-top: 2.5em;
+		}
+	}
+</style>
