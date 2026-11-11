@@ -5,35 +5,15 @@ import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import { getCollection } from 'astro:content';
+import { PHOTOS } from '../photos';
+import PhotoCredit from '../components/PhotoCredit.astro';
 
 const posts = (await getCollection('blog'))
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
 	.slice(0, 3);
 
-// Golden Gate-style suspension bridge, drawn in a 1200 x 400 scene.
-const towerL = 380;
-const towerR = 820;
-const towerTop = 95;
-const deckY = 250;
-const sag = 300; // control point for the main-span cable curve
-
-// Point on the main cable (quadratic Bézier) for a given x between the towers.
-const mainCableY = (x: number) => {
-	const t = (x - towerL) / (towerR - towerL);
-	return (1 - t) ** 2 * towerTop + 2 * (1 - t) * t * sag + t ** 2 * towerTop;
-};
-// Side spans run straight-ish from the tower tops down to the shore anchors.
-const sideCableY = (x: number) =>
-	x < towerL
-		? deckY - 15 - ((x - 0) / towerL) * (deckY - 15 - towerTop)
-		: towerTop + ((x - towerR) / (1200 - towerR)) * (deckY - 15 - towerTop);
-
-const suspenders: { x: number; y: number }[] = [];
-for (let x = 20; x < 1200; x += 20) {
-	if (Math.abs(x - towerL) < 14 || Math.abs(x - towerR) < 14) continue;
-	const y = x > towerL && x < towerR ? mainCableY(x) : sideCableY(x);
-	suspenders.push({ x, y });
-}
+const hero = PHOTOS.aerial;
+const pano = PHOTOS.skyline;
 ---
 
 <!doctype html>
@@ -45,6 +25,17 @@ for (let x = 20; x < 1200; x += 20) {
 		<Header />
 
 		<section class="hero" aria-labelledby="hero-title">
+			<img
+				class="hero-photo"
+				src={hero.src}
+				srcset={`${hero.srcSmall} 960w, ${hero.src} 1920w`}
+				sizes="100vw"
+				width={hero.width}
+				height={hero.height}
+				alt={hero.alt}
+				fetchpriority="high"
+			/>
+			<div class="hero-shade" aria-hidden="true"></div>
 			<div class="hero-text">
 				<p class="coords">37.7749° N &nbsp;·&nbsp; 122.4194° W</p>
 				<h1 id="hero-title">Hi, I'm Brittany.</h1>
@@ -57,77 +48,7 @@ for (let x = 20; x < 1200; x += 20) {
 					<a class="button ghost" href="/about">About me</a>
 				</div>
 			</div>
-			<svg class="scene" viewBox="0 40 1200 360" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
-				<defs>
-					<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-						<stop offset="0" stop-color="#dfe4ea"></stop>
-						<stop offset="0.55" stop-color="#f3e3d3"></stop>
-						<stop offset="1" stop-color="#f4c7a1"></stop>
-					</linearGradient>
-					<linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
-						<stop offset="0" stop-color="#3b5b7f"></stop>
-						<stop offset="1" stop-color="#1f3a5f"></stop>
-					</linearGradient>
-					<filter id="blur" x="-20%" y="-50%" width="140%" height="200%">
-						<feGaussianBlur stdDeviation="14"></feGaussianBlur>
-					</filter>
-				</defs>
-
-				<rect width="1200" height="400" fill="url(#sky)"></rect>
-				<circle cx="960" cy="150" r="46" fill="#f8d9b8" opacity="0.9"></circle>
-
-				<!-- Marin Headlands and the city's hills -->
-				<path d="M560 270 Q700 150 860 205 Q980 160 1200 225 V300 H560 Z" fill="#8a9a8c" opacity="0.55"></path>
-				<path d="M0 255 Q120 215 250 240 Q330 225 400 262 V300 H0 Z" fill="#7d8a82" opacity="0.6"></path>
-
-				<!-- Fog rolling in behind the bridge -->
-				<g class="fog fog-back" filter="url(#blur)">
-					<ellipse cx="300" cy="215" rx="260" ry="26" fill="#fff" opacity="0.75"></ellipse>
-					<ellipse cx="900" cy="230" rx="320" ry="30" fill="#fff" opacity="0.7"></ellipse>
-				</g>
-
-				<!-- Water -->
-				<rect y="262" width="1200" height="138" fill="url(#water)"></rect>
-				<g stroke="#ffffff" stroke-opacity="0.18" stroke-width="2" stroke-linecap="round">
-					<line x1="120" y1="300" x2="190" y2="300"></line>
-					<line x1="520" y1="330" x2="610" y2="330"></line>
-					<line x1="900" y1="312" x2="960" y2="312"></line>
-					<line x1="1040" y1="356" x2="1120" y2="356"></line>
-					<line x1="280" y1="372" x2="360" y2="372"></line>
-				</g>
-
-				<!-- The bridge -->
-				<g class="bridge">
-					<g class="suspenders" stroke-width="1.4">
-						{suspenders.map((s) => <line x1={s.x} y1={s.y} x2={s.x} y2={deckY} />)}
-					</g>
-					<path
-						class="cable"
-						d={`M0 ${deckY - 15} L${towerL} ${towerTop} Q600 ${sag} ${towerR} ${towerTop} L1200 ${deckY - 15}`}
-						fill="none"
-						stroke-width="4"
-					></path>
-					<rect x="0" y={deckY} width="1200" height="9"></rect>
-					{
-						[towerL, towerR].map((x) => (
-							<g>
-								<rect x={x - 12} y={towerTop - 10} width="8" height={262 - towerTop + 10 + 40} />
-								<rect x={x + 4} y={towerTop - 10} width="8" height={262 - towerTop + 10 + 40} />
-								<rect x={x - 14} y={towerTop + 6} width="28" height="6" />
-								<rect x={x - 14} y={towerTop + 50} width="28" height="6" />
-								<rect x={x - 14} y={towerTop + 100} width="28" height="6" />
-								<rect x={x - 14} y={deckY - 30} width="28" height="6" />
-							</g>
-						))
-					}
-				</g>
-
-				<!-- Low fog drifting in front -->
-				<g class="fog fog-front" filter="url(#blur)">
-					<ellipse cx="160" cy="268" rx="240" ry="22" fill="#fff" opacity="0.65"></ellipse>
-					<ellipse cx="700" cy="282" rx="300" ry="20" fill="#fff" opacity="0.55"></ellipse>
-				</g>
-			</svg>
+			<PhotoCredit photo={hero} class="hero-credit" />
 		</section>
 
 		<main class="home">
@@ -158,6 +79,22 @@ for (let x = 20; x < 1200; x += 20) {
 				</ul>
 			</section>
 
+			<figure class="pano">
+				<img
+					src={pano.src}
+					srcset={`${pano.srcSmall} 960w, ${pano.src} 1920w`}
+					sizes="(max-width: 1080px) 100vw, 1080px"
+					width={pano.width}
+					height={pano.height}
+					alt={pano.alt}
+					loading="lazy"
+				/>
+				<figcaption>
+					<span>{pano.caption}</span>
+					<PhotoCredit photo={pano} />
+				</figcaption>
+			</figure>
+
 			<section class="city" aria-label="San Francisco">
 				<div class="city-card">
 					<span class="tag">Local forecast</span>
@@ -182,41 +119,42 @@ for (let x = 20; x < 1200; x += 20) {
 	/* ---------- Hero ---------- */
 	.hero {
 		position: relative;
+		display: flex;
+		align-items: flex-end;
+		min-height: clamp(480px, 78vh, 760px);
 		overflow: hidden;
-		background: #dfe4ea;
+		background: var(--bay);
+		color: #fff;
 	}
-	.scene {
-		display: block;
+	.hero-photo {
+		position: absolute;
+		inset: 0;
 		width: 100%;
-		height: clamp(230px, 34vw, 440px);
-		margin-top: 0.5em;
+		height: 100%;
+		object-fit: cover;
+		object-position: 55% 35%;
+		border-radius: 0;
+		animation: settle 1.6s ease-out both;
 	}
-	.bridge {
-		fill: var(--accent);
-	}
-	.bridge .cable,
-	.bridge .suspenders {
-		stroke: var(--accent);
-	}
-	.fog {
-		animation: drift 38s ease-in-out infinite alternate;
-	}
-	.fog-front {
-		animation-duration: 26s;
-		animation-direction: alternate-reverse;
-	}
-	@keyframes drift {
+	@keyframes settle {
 		from {
-			transform: translateX(-60px);
+			transform: scale(1.06);
 		}
 		to {
-			transform: translateX(60px);
+			transform: scale(1);
 		}
 	}
 	@media (prefers-reduced-motion: reduce) {
-		.fog {
+		.hero-photo {
 			animation: none;
 		}
+	}
+	.hero-shade {
+		position: absolute;
+		inset: 0;
+		background:
+			linear-gradient(to top, rgba(15, 26, 44, 0.88) 0%, rgba(15, 26, 44, 0.45) 45%, rgba(15, 26, 44, 0.05) 75%),
+			linear-gradient(to right, rgba(15, 26, 44, 0.55), transparent 65%);
 	}
 	.hero-text {
 		position: relative;
@@ -224,7 +162,14 @@ for (let x = 20; x < 1200; x += 20) {
 		width: 1080px;
 		max-width: calc(100% - 2em);
 		margin: 0 auto;
-		padding: clamp(2.5em, 7vh, 4.5em) 0 0;
+		padding: 0 0 clamp(3em, 9vh, 5.5em);
+	}
+	.hero :global(.hero-credit) {
+		position: absolute;
+		right: 1em;
+		bottom: 0.6em;
+		z-index: 1;
+		color: rgba(255, 255, 255, 0.8);
 	}
 	.coords {
 		margin: 0 0 0.75em;
@@ -232,19 +177,20 @@ for (let x = 20; x < 1200; x += 20) {
 		font-weight: 700;
 		letter-spacing: 0.14em;
 		text-transform: uppercase;
-		color: var(--accent-dark);
+		color: var(--sunset);
 	}
 	.hero h1 {
 		margin: 0 0 0.3em;
 		font-size: clamp(2.6rem, 7vw, 4.8rem);
 		line-height: 1.02;
-		color: rgb(var(--black));
+		color: #fff;
+		text-shadow: 0 2px 24px rgba(0, 0, 0, 0.35);
 	}
 	.lede {
 		max-width: 30em;
 		margin: 0 0 1.5em;
 		font-size: clamp(1.05rem, 2.2vw, 1.3rem);
-		color: rgb(var(--gray-dark));
+		color: rgba(255, 255, 255, 0.92);
 	}
 	.actions {
 		display: flex;
@@ -274,9 +220,10 @@ for (let x = 20; x < 1200; x += 20) {
 		color: #fff;
 	}
 	.button.ghost {
-		background: rgba(255, 255, 255, 0.7);
-		color: rgb(var(--black));
-		border: 1px solid rgba(var(--black), 0.15);
+		background: rgba(255, 255, 255, 0.12);
+		color: #fff;
+		border: 1px solid rgba(255, 255, 255, 0.55);
+		backdrop-filter: blur(6px);
 	}
 	.button.ghost:hover {
 		background: #fff;
@@ -360,6 +307,28 @@ for (let x = 20; x < 1200; x += 20) {
 		color: rgb(var(--gray));
 	}
 
+	/* ---------- Panorama ---------- */
+	.pano {
+		margin: 3.5em 0 0;
+	}
+	.pano img {
+		display: block;
+		width: 100%;
+		aspect-ratio: 1920 / 400;
+		min-height: 160px;
+		object-fit: cover;
+		border-radius: 14px;
+	}
+	.pano figcaption {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		gap: 0.25em 1em;
+		margin-top: 0.5em;
+		font-size: 0.8em;
+		color: rgb(var(--gray));
+	}
+
 	/* ---------- City strip ---------- */
 	.city {
 		display: grid;
@@ -389,6 +358,9 @@ for (let x = 20; x < 1200; x += 20) {
 	}
 
 	@media (max-width: 720px) {
+		.hero-shade {
+			background: linear-gradient(to top, rgba(15, 26, 44, 0.92) 0%, rgba(15, 26, 44, 0.55) 55%, rgba(15, 26, 44, 0.15) 100%);
+		}
 		.section-head h2 {
 			font-size: 1.45em;
 		}
