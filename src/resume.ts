@@ -8,6 +8,9 @@ export const PROFILE = {
 	email: 'Brittany.helm92@gmail.com',
 	linkedin: 'https://www.linkedin.com/in/brittany-helm345',
 	resume: '/Brittany-Helm-Resume.pdf',
+	headshot: '/photos/headshot-square-640.webp',
+	headshotSmall: '/photos/headshot-square-320.webp',
+	portrait: '/photos/headshot-portrait-720.webp',
 	summary:
 		'Executive Assistant with 8 years of experience supporting partners and senior investment leaders at private equity and venture capital firms in San Francisco. Skilled in complex calendar management, international travel, investor relations and office operations, with a reputation for sound judgment, discretion and anticipating executive needs.',
 };

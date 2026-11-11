@@ -39,7 +39,16 @@ const banner = PHOTOS.aerial;
 
 		<main>
 			<article class="prose">
-				<p class="intro">{PROFILE.summary}</p>
+				<div class="intro-wrap">
+					<img
+						class="portrait"
+						src={PROFILE.portrait}
+						width="720"
+						height="900"
+						alt={`Portrait of ${PROFILE.name}`}
+					/>
+					<p class="intro">{PROFILE.summary}</p>
+				</div>
 
 				<h2>From the cabin to the corner office</h2>
 				<p>
@@ -149,7 +158,34 @@ const banner = PHOTOS.aerial;
 	.prose {
 		padding-top: 1em;
 	}
+	.intro-wrap {
+		display: grid;
+		grid-template-columns: 220px 1fr;
+		gap: 1.8em;
+		align-items: start;
+	}
+	.portrait {
+		position: relative;
+		margin-top: -5.5em;
+		width: 100%;
+		height: auto;
+		border-radius: 16px;
+		border: 4px solid #fff;
+		box-shadow: var(--box-shadow);
+	}
+	@media (max-width: 600px) {
+		.intro-wrap {
+			grid-template-columns: 1fr;
+			justify-items: center;
+		}
+		.portrait {
+			width: 200px;
+			margin-top: -4em;
+		}
+	}
 	.intro {
+		margin: 0;
+		padding-top: 0.6em;
 		font-family: var(--serif);
 		font-size: 1.2em;
 		line-height: 1.6;

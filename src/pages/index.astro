@@ -25,6 +25,7 @@ const personJsonLd = JSON.stringify({
 	'@type': 'Person',
 	name: PROFILE.name,
 	jobTitle: 'Executive Assistant',
+	image: new URL(PROFILE.headshot, Astro.site).toString(),
 	url: Astro.site?.toString(),
 	sameAs: [PROFILE.linkedin],
 	address: { '@type': 'PostalAddress', addressLocality: 'San Francisco', addressRegion: 'CA' },
@@ -65,6 +66,15 @@ const personJsonLd = JSON.stringify({
 			/>
 			<div class="hero-shade" aria-hidden="true"></div>
 			<div class="hero-text">
+				<img
+					class="avatar"
+					src={PROFILE.headshotSmall}
+					srcset={`${PROFILE.headshotSmall} 320w, ${PROFILE.headshot} 640w`}
+					sizes="140px"
+					width="140"
+					height="140"
+					alt={`Portrait of ${PROFILE.name}`}
+				/>
 				<p class="eyebrow"><span>{PROFILE.title}</span><span class="sep" aria-hidden="true"> &nbsp;·&nbsp; </span><span class="loc">{PROFILE.location}</span></p>
 				<h1 id="hero-title">{PROFILE.name}</h1>
 				<p class="lede">
@@ -368,6 +378,18 @@ const personJsonLd = JSON.stringify({
 		max-width: calc(100% - 2em);
 		margin: 0 auto;
 		padding: 3em 0 5em;
+	}
+	.avatar {
+		display: block;
+		width: 140px;
+		height: 140px;
+		margin-bottom: 1.2em;
+		border-radius: 50%;
+		object-fit: cover;
+		border: 3px solid rgba(255, 255, 255, 0.9);
+		box-shadow:
+			0 0 0 6px rgba(192, 54, 44, 0.55),
+			0 12px 32px rgba(0, 0, 0, 0.45);
 	}
 	.eyebrow {
 		margin: 0 0 0.8em;
@@ -704,6 +726,10 @@ const personJsonLd = JSON.stringify({
 		}
 		.eyebrow .sep {
 			display: none;
+		}
+		.avatar {
+			width: 104px;
+			height: 104px;
 		}
 		.eyebrow .loc {
 			display: block;
