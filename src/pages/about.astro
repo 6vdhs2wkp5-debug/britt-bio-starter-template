@@ -1,62 +1,195 @@
 ---
-import Layout from '../layouts/BlogPost.astro';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import PhotoCredit from '../components/PhotoCredit.astro';
+import { PHOTOS } from '../photos';
+import { PROFILE, EDUCATION } from '../resume';
+
+const banner = PHOTOS.aerial;
 ---
 
-<Layout
-	title="About Me"
-	description="Lorem ipsum dolor sit amet"
-	pubDate={new Date('August 08 2021')}
-	heroImage="/blog-placeholder-about.jpg"
->
-	<p>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-		labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo
-		viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam
-		adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus
-		et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus
-		vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque
-		sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
-	</p>
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead
+			title={`About ${PROFILE.name} | Executive Assistant, San Francisco`}
+			description="How Brittany Helm went from leading cabin crews at Virgin America to supporting partners at San Francisco private equity and venture capital firms."
+		/>
+	</head>
+	<body>
+		<Header />
 
-	<p>
-		Morbi tristique senectus et netus. Id semper risus in hendrerit gravida rutrum quisque non
-		tellus. Habitasse platea dictumst quisque sagittis purus sit amet. Tellus molestie nunc non
-		blandit massa. Cursus vitae congue mauris rhoncus. Accumsan tortor posuere ac ut. Fringilla urna
-		porttitor rhoncus dolor. Elit ullamcorper dignissim cras tincidunt lobortis. In cursus turpis
-		massa tincidunt dui ut ornare lectus. Integer feugiat scelerisque varius morbi enim nunc.
-		Bibendum neque egestas congue quisque egestas diam. Cras ornare arcu dui vivamus arcu felis
-		bibendum. Dignissim suspendisse in est ante in nibh mauris. Sed tempus urna et pharetra pharetra
-		massa massa ultricies mi.
-	</p>
+		<section class="banner">
+			<img
+				src={banner.src}
+				srcset={`${banner.srcSmall} 960w, ${banner.src} 1920w`}
+				sizes="100vw"
+				width={banner.width}
+				height={banner.height}
+				alt={banner.alt}
+			/>
+			<div class="banner-shade" aria-hidden="true"></div>
+			<div class="banner-text">
+				<p class="eyebrow">About</p>
+				<h1>Calm, prepared, a step ahead</h1>
+			</div>
+			<PhotoCredit photo={banner} class="banner-credit" />
+		</section>
 
-	<p>
-		Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque. Diam sit amet nisl
-		suscipit. Lacus viverra vitae congue eu consequat ac felis donec. Egestas integer eget aliquet
-		nibh praesent tristique magna sit amet. Eget magna fermentum iaculis eu non diam. In vitae
-		turpis massa sed elementum. Tristique et egestas quis ipsum suspendisse ultrices. Eget lorem
-		dolor sed viverra ipsum. Vel turpis nunc eget lorem dolor sed viverra. Posuere ac ut consequat
-		semper viverra nam. Laoreet suspendisse interdum consectetur libero id faucibus. Diam phasellus
-		vestibulum lorem sed risus ultricies tristique. Rhoncus dolor purus non enim praesent elementum
-		facilisis. Ultrices tincidunt arcu non sodales neque. Tempus egestas sed sed risus pretium quam
-		vulputate. Viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Fringilla
-		urna porttitor rhoncus dolor purus non. Amet dictum sit amet justo donec enim.
-	</p>
+		<main>
+			<article class="prose">
+				<p class="intro">{PROFILE.summary}</p>
 
-	<p>
-		Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac ut consequat semper
-		viverra. Tellus mauris a diam maecenas sed enim ut sem viverra. Venenatis urna cursus eget nunc
-		scelerisque viverra mauris in. Arcu ac tortor dignissim convallis aenean et tortor at. Curabitur
-		gravida arcu ac tortor dignissim convallis aenean et tortor. Egestas tellus rutrum tellus
-		pellentesque eu. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Ut enim
-		blandit volutpat maecenas volutpat blandit aliquam etiam. Id donec ultrices tincidunt arcu. Id
-		cursus metus aliquam eleifend mi.
-	</p>
+				<h2>From the cabin to the corner office</h2>
+				<p>
+					My career started at 35,000 feet. As a Lead Flight Attendant at Virgin America, a program
+					with under 1% acceptance, I served as Conflict Resolution Manager and Safety &amp;
+					Compliance Coordinator. It taught me to stay calm when plans change at the last minute and
+					to look after people before they have to ask.
+				</p>
+				<p>
+					Since 2018 I've brought that into executive support: first for the CEO of ClinCapture,
+					then for the team at Owl Ventures through a $1B+ fundraise, then for six senior investment
+					leaders at CVC Advisors, where I also ran the 10-person West Coast office across the
+					Financial District and the Presidio. Most recently at Centana Growth Partners, I supported a
+					founding partner, a partner and their deal teams, and planned the firm's investor meeting,
+					advisory boards and offsites.
+				</p>
 
-	<p>
-		Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus imperdiet. Id porta
-		nibh venenatis cras sed felis eget velit. Ipsum a arcu cursus vitae. Facilisis magna etiam
-		tempor orci eu lobortis elementum. Tincidunt dui ut ornare lectus sit. Quisque non tellus orci
-		ac. Blandit libero volutpat sed cras. Nec tincidunt praesent semper feugiat nibh sed pulvinar
-		proin gravida. Egestas integer eget aliquet nibh praesent tristique magna.
-	</p>
-</Layout>
+				<h2>How I work</h2>
+				<ul>
+					<li>
+						<strong>Anticipate, don't react.</strong> Conflicts, visas and last-minute itinerary
+						changes get solved before they reach the partner.
+					</li>
+					<li>
+						<strong>Discretion by default.</strong> I'm trusted with sensitive matters and with
+						executives' personal and family logistics.
+					</li>
+					<li>
+						<strong>Automate the routine.</strong> I build AI-assisted workflows with Claude, ChatGPT
+						and Copilot so calendar audits and expense reconciliation run on schedule.
+					</li>
+					<li>
+						<strong>Relationships matter.</strong> Portfolio CEOs, LPs and advisory board members
+						know they can come to me directly.
+					</li>
+				</ul>
+
+				<h2>Off the clock</h2>
+				<p>
+					I studied Humanities at {EDUCATION.school}, where I was a {EDUCATION.note}. Leading a
+					D1 squad turned out to be good training for keeping a team coordinated, on time and in
+					sync.
+				</p>
+
+				<div class="cta">
+					<a class="button primary" href={`mailto:${PROFILE.email}`}>Email me</a>
+					<a class="button ghost" href={PROFILE.linkedin} target="_blank" rel="noopener">LinkedIn</a>
+					<a class="button ghost" href={PROFILE.resume} download>Résumé (PDF)</a>
+				</div>
+			</article>
+		</main>
+
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.banner {
+		position: relative;
+		min-height: clamp(260px, 42vh, 420px);
+		display: flex;
+		align-items: flex-end;
+		overflow: hidden;
+		background: var(--bay);
+		color: #fff;
+	}
+	.banner img {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: 55% 35%;
+		border-radius: 0;
+	}
+	.banner-shade {
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(to top, rgba(15, 26, 44, 0.9), rgba(15, 26, 44, 0.25));
+	}
+	.banner-text {
+		position: relative;
+		width: 720px;
+		max-width: calc(100% - 2em);
+		margin: 0 auto;
+		padding-bottom: 2.4em;
+	}
+	.eyebrow {
+		margin: 0 0 0.4em;
+		font-size: 0.74em;
+		font-weight: 700;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+		color: var(--sunset);
+	}
+	.banner h1 {
+		margin: 0;
+		color: #fff;
+		font-size: clamp(2rem, 5vw, 3.2rem);
+	}
+	.banner :global(.banner-credit) {
+		position: absolute;
+		right: 1em;
+		bottom: 0.6em;
+		color: rgba(255, 255, 255, 0.75);
+	}
+	.prose {
+		padding-top: 1em;
+	}
+	.intro {
+		font-family: var(--serif);
+		font-size: 1.2em;
+		line-height: 1.6;
+		color: rgb(var(--black));
+	}
+	.prose h2 {
+		margin-top: 1.6em;
+		font-size: 1.5em;
+	}
+	.prose li {
+		margin-bottom: 0.6em;
+	}
+	.cta {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.6em;
+		margin-top: 2.5em;
+	}
+	.button {
+		display: inline-block;
+		padding: 0.6em 1.25em;
+		border-radius: 999px;
+		font-size: 0.85em;
+		font-weight: 700;
+		text-decoration: none;
+	}
+	.button.primary {
+		background: var(--accent);
+		color: #fff;
+	}
+	.button.primary:hover {
+		background: var(--accent-dark);
+		color: #fff;
+	}
+	.button.ghost {
+		border: 1px solid rgba(var(--black), 0.2);
+		color: rgb(var(--black));
+	}
+	.button.ghost:hover {
+		border-color: var(--accent);
+		color: var(--accent);
+	}
+</style>

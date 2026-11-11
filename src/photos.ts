@@ -23,6 +23,20 @@ const CC_BY_SA_4 = {
 };
 
 export const PHOTOS = {
+	night: {
+		src: '/photos/bay-night-1280.webp',
+		srcSmall: '/photos/bay-night-960.webp',
+		width: 1280,
+		height: 720,
+		alt: 'The western span of the Bay Bridge lit up at night over San Francisco Bay',
+		caption: 'The Bay Bridge western span at night',
+		author: 'Dllu',
+		authorUrl: 'https://commons.wikimedia.org/wiki/User:Dllu',
+		sourceUrl:
+			'https://commons.wikimedia.org/wiki/File:San_Francisco_Bay_Bridge_Western_Span_at_night.jpg',
+		...CC_BY_SA_4,
+		changes: 'resized',
+	},
 	aerial: {
 		src: '/photos/bay-aerial-1920.webp',
 		srcSmall: '/photos/bay-aerial-960.webp',
