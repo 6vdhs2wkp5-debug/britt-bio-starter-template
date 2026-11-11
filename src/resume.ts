@@ -16,36 +16,36 @@ export const PROFILE = {
 };
 
 export const STATS = [
-	{ value: '8 yrs', label: 'supporting PE & VC partners and investment leaders' },
-	{ value: '$1B+', label: 'LP fundraise supported at Owl Ventures' },
-	{ value: '6', label: 'senior investment leaders supported at once at CVC' },
-	{ value: '3× / week', label: 'AI-assisted partner calendar audits I designed' },
+	{ value: '8 years', label: 'supporting partners at PE and VC firms' },
+	{ value: '$1B+', label: 'fundraise I helped support at Owl Ventures' },
+	{ value: '6', label: 'investment leaders I supported at once at CVC' },
+	{ value: '3× a week', label: 'partner calendars checked by a workflow I built' },
 ];
 
 export const STRENGTHS = [
 	{
-		title: 'Executive & calendar management',
-		body: 'High-volume, multi-time-zone calendars for partners and deal teams, with conflicts caught before they reach the executive.',
+		title: 'Calendars that hold up',
+		body: 'Busy, multi-time-zone calendars for partners and deal teams. I catch the conflicts and prep gaps before they turn into problems.',
 	},
 	{
-		title: 'Travel, events & board meetings',
-		body: 'Investor meetings, advisory boards, partner offsites and multi-person international travel, from vendors to day-of coordination.',
+		title: 'Travel and events',
+		body: 'Investor meetings, advisory boards, offsites and group travel, from booking the venue to running the day itself.',
 	},
 	{
-		title: 'Investor & stakeholder relations',
-		body: 'Trusted point of contact for portfolio company CEOs, limited partners and advisory board members.',
+		title: 'People who trust me',
+		body: 'Portfolio CEOs, LPs and board members know they can come straight to me, and that it will get handled.',
 	},
 	{
-		title: 'Office operations',
-		body: 'Ran a 10-person West Coast office end to end: relocation, vendors, IT, guests, catering and monthly invoicing.',
+		title: 'An office that just works',
+		body: 'I ran a 10-person office on my own: a move, vendors, IT, guests, lunches and the monthly invoices.',
 	},
 	{
-		title: 'AI-powered workflows',
-		body: 'Builds repeatable workflows with Claude, ChatGPT and Copilot that audit calendars and reconcile expenses automatically.',
+		title: 'Smart about the busywork',
+		body: 'I use AI for the repetitive checks, so my time goes to the people and the judgment calls.',
 	},
 	{
-		title: 'Discretion & judgment',
-		body: 'Handles sensitive matters, personal logistics and family coordination for executives with full confidentiality.',
+		title: 'Discreet, always',
+		body: 'Sensitive deals, personal logistics, family plans. Executives trust me with all of it.',
 	},
 ];
 
@@ -63,9 +63,9 @@ export const EXPERIENCE: Role[] = [
 		company: 'Centana Growth Partners',
 		dates: 'Mar 2026 – Oct 2026',
 		highlights: [
-			'Supported a founding partner, a partner and their deal teams; managed the company-wide calendar and served as a primary contact for portfolio CEOs, LPs and advisory board members.',
-			'Planned the annual investor meeting, two advisory board meetings, three partner offsites and two company-wide offsites, owning vendors, itineraries, budgets and day-of coordination.',
-			'Designed AI-assisted workflows that audit both partners’ calendars three times a week and reconcile calendars against logged expenses monthly, improving allocation accuracy and reimbursement.',
+			'Supported a founding partner, a partner and their deal teams, and ran the firm-wide calendar. I was a go-to contact for portfolio CEOs, LPs and advisory board members.',
+			'Planned the annual investor meeting, two advisory board meetings, three partner offsites and two company offsites, from vendors and budgets to running the day.',
+			'Built AI workflows that check both partners’ calendars three times a week and match calendars to expenses every month.',
 		],
 		strengths: ['Event Planning', 'Calendar Management', 'Stakeholder Engagement', 'AI Workflow Design'],
 	},
@@ -74,9 +74,9 @@ export const EXPERIENCE: Role[] = [
 		company: 'CVC Advisors',
 		dates: 'Sep 2021 – Mar 2026',
 		highlights: [
-			'Delivered high-level support to 6 senior investment leaders in a fast-paced private equity environment, managing competing priorities and sensitive matters.',
-			'Owned high-volume, multi-time-zone calendars and domestic and international travel, including visa processing and last-minute changes.',
-			'Ran operations independently for a 10-person West Coast office across the Financial District and the Presidio; led multi-currency expense reporting and annual carbon-emissions reporting.',
+			'Supported six senior investment leaders at a fast-moving private equity firm, juggling competing priorities and sensitive matters.',
+			'Owned their calendars across time zones and all of their travel, including visas and last-minute changes.',
+			'Ran the 10-person West Coast office on my own across the Financial District and the Presidio, plus multi-currency expense reporting and the annual carbon-emissions report.',
 		],
 		strengths: ['Complex Calendaring', 'International Travel', 'Office Operations', 'Confidentiality'],
 	},
@@ -86,7 +86,7 @@ export const EXPERIENCE: Role[] = [
 		dates: 'Sep 2018 – Jan 2021',
 		highlights: [
 			'Supported 3 employees through a $1B+ fundraise from LPs.',
-			'Managed Diversity & Inclusion reporting across portfolio CEOs and co-led the LP-facing Education & Outcomes Report.',
+			'Ran Diversity & Inclusion reporting across our portfolio CEOs and co-led the Education & Outcomes Report for LPs.',
 			'Onboarded two new employees remotely and led company-wide expense reporting.',
 		],
 		strengths: ['Investor Relations', 'Data Analysis', 'Report Writing', 'Onboarding'],
@@ -106,20 +106,38 @@ export const EXPERIENCE: Role[] = [
 		company: 'Virgin America',
 		dates: 'Jul 2017 – Jan 2018',
 		highlights: [
-			'Logged 300+ flight hours as Conflict Resolution Manager and Safety & Compliance Coordinator; selected from a program with under 1% acceptance.',
+			'Flew 300+ hours as Conflict Resolution Manager and Safety & Compliance Coordinator, after being selected for a program with under 1% acceptance.',
 		],
 		strengths: ['Conflict Resolution', 'Safety & Compliance', 'Leadership'],
 	},
 ];
 
-export const AI_WORKFLOWS = [
+export interface Workflow {
+	title: string;
+	when: string;
+	does: string[];
+	result: string;
+}
+
+export const AI_WORKFLOWS: Workflow[] = [
 	{
-		title: 'Partner calendar audit',
-		body: 'Scans both partners’ calendars three times a week for conflicts and reviews recurring internal and external meetings, including 1:1s with portfolio CEOs, so issues are fixed before the partners ever see them.',
+		title: 'Partner calendar check',
+		when: 'Three times a week',
+		does: [
+			'Scans both partners’ calendars for conflicts',
+			'Reviews recurring internal and external meetings, including 1:1s with portfolio CEOs',
+			'Flags anything that needs a fix',
+		],
+		result: 'Issues get sorted before the partners ever see them.',
 	},
 	{
-		title: 'Calendar-to-expense reconciliation',
-		body: 'Monthly workflow that matches each partner’s calendar against logged expenses, improving allocation accuracy and making sure everything is fully reimbursed.',
+		title: 'Calendar-to-expense match',
+		when: 'Once a month',
+		does: [
+			'Lines up each partner’s calendar with their logged expenses',
+			'Spots anything missing or allocated to the wrong place',
+		],
+		result: 'More accurate allocations, and every expense gets reimbursed.',
 	},
 ];
 

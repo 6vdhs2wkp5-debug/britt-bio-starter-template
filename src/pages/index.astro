@@ -78,11 +78,11 @@ const personJsonLd = JSON.stringify({
 				<p class="eyebrow"><span>{PROFILE.title}</span><span class="sep" aria-hidden="true"> &nbsp;·&nbsp; </span><span class="loc">{PROFILE.location}</span></p>
 				<h1 id="hero-title">{PROFILE.name}</h1>
 				<p class="lede">
-					I keep partners and investment teams at private equity and venture capital firms running
-					smoothly: calendars, travel, investor events and the office, handled with discretion and
-					a step ahead.
+					I'm an executive assistant and office manager in San Francisco. For eight years I've
+					supported partners at private equity and venture capital firms, keeping their calendars,
+					travel, investor events and offices running so they can focus on the deals.
 				</p>
-				<p class="status"><span class="dot" aria-hidden="true"></span>Open to Executive Assistant &amp; Office Manager roles in the Bay Area</p>
+				<p class="status"><span class="dot" aria-hidden="true"></span>Open to new EA and office manager roles in the Bay Area</p>
 				<div class="actions">
 					<a class="button primary" href={PROFILE.resume} download>Download résumé</a>
 					<a class="button ghost" href={PROFILE.linkedin} target="_blank" rel="noopener">LinkedIn</a>
@@ -107,8 +107,8 @@ const personJsonLd = JSON.stringify({
 
 			<!-- ============ Strengths ============ -->
 			<section id="strengths" class="block" aria-labelledby="strengths-title">
-				<p class="kicker">What I bring</p>
-				<h2 id="strengths-title">The support a partner never has to think about</h2>
+				<p class="kicker">What I do</p>
+				<h2 id="strengths-title">I handle the details, so partners don’t have to</h2>
 				<div class="strengths">
 					{
 						STRENGTHS.map((s, i) => (
@@ -127,7 +127,7 @@ const personJsonLd = JSON.stringify({
 				<div class="section-head">
 					<div>
 						<p class="kicker">Experience</p>
-						<h2 id="experience-title">Private equity, venture capital and beyond</h2>
+						<h2 id="experience-title">Where I’ve worked</h2>
 					</div>
 					<a class="see-all" href={PROFILE.resume} download>Full résumé (PDF) ↓</a>
 				</div>
@@ -160,38 +160,52 @@ const personJsonLd = JSON.stringify({
 			</section>
 		</main>
 
-		<!-- ============ AI workflows (full-width band) ============ -->
-		<section id="ai" class="ai-band" aria-labelledby="ai-title">
+		<!-- ============ AI workflows ============ -->
+		<section id="ai" class="ai" aria-labelledby="ai-title">
 			<div class="ai-inner">
 				<div class="ai-intro">
-					<p class="kicker light">How I work</p>
-					<h2 id="ai-title">AI-assisted, human-judged</h2>
+					<p class="kicker">How I use AI</p>
+					<h2 id="ai-title">I let AI handle the busywork</h2>
 					<p>
-						I build repeatable workflows with AI so routine checks run on schedule and my time goes
-						to the judgment calls. Two I designed and ran at Centana Growth Partners:
+						The repetitive checks run on a schedule now, which frees me up for the parts of the job
+						that need a person: the conversations, the judgment calls, the small things that make a
+						partner's day go smoothly. Here are two workflows I built and ran at Centana.
 					</p>
+					<div class="tools">
+						<span class="tool-label">Tools I use every day</span>
+						<p class="chips">
+							{
+								[...TOOLS.AI, ...TOOLS.Systems].map((t) => (
+									<span class:list={['chip', { 'is-ai': TOOLS.AI.includes(t) }]}>{t}</span>
+								))
+							}
+						</p>
+					</div>
 				</div>
-				<div class="ai-cards">
+				<div class="flows">
 					{
 						AI_WORKFLOWS.map((w) => (
-							<article class="ai-card">
-								<h3>{w.title}</h3>
-								<p>{w.body}</p>
-							</article>
-						))
-					}
-				</div>
-				<div class="tools">
-					{
-						Object.entries(TOOLS).map(([group, items]) => (
-							<div class="tool-group">
-								<span class="tool-label">{group}</span>
-								<p class="chips">
-									{items.map((t) => (
-										<span class="chip dark">{t}</span>
+							<article class="flow">
+								<header class="flow-head">
+									<h3>{w.title}</h3>
+									<span class="cadence">
+										<svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true">
+											<circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.6" />
+											<path d="M8 4.5V8l2.5 1.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+										</svg>
+										{w.when}
+									</span>
+								</header>
+								<ul class="steps">
+									{w.does.map((d) => (
+										<li>{d}</li>
 									))}
+								</ul>
+								<p class="result">
+									<span class="result-label">The result</span>
+									{w.result}
 								</p>
-							</div>
+							</article>
 						))
 					}
 				</div>
@@ -208,11 +222,11 @@ const personJsonLd = JSON.stringify({
 					<p class="edu-note">{EDUCATION.note}</p>
 				</div>
 				<div class="edu-card">
-					<p class="kicker">Before the desk</p>
+					<p class="kicker">Where I started</p>
 					<h2>Lead Flight Attendant, Virgin America</h2>
 					<p class="edu-line">
-						Conflict resolution and safety leadership at 35,000 feet: calm under pressure is a habit,
-						not a talking point.
+						Handling conflicts and safety at 35,000 feet taught me to stay calm when plans change at
+						the last minute, which comes in handy in this job.
 					</p>
 					<a class="text-link" href="/about">More about me →</a>
 				</div>
@@ -232,7 +246,7 @@ const personJsonLd = JSON.stringify({
 				<div class="contact-shade" aria-hidden="true"></div>
 				<div class="contact-text">
 					<h2 id="contact-title">Let's talk</h2>
-					<p>Hiring an Executive Assistant or Office Manager in San Francisco? I'd love to hear about the role.</p>
+					<p>If you're hiring an executive assistant or office manager in San Francisco, I'd love to hear about the role.</p>
 					<div class="actions">
 						<a class="button primary" href={`mailto:${PROFILE.email}`}>Email me</a>
 						<a class="button ghost" href={PROFILE.linkedin} target="_blank" rel="noopener">Connect on LinkedIn</a>
@@ -275,10 +289,13 @@ const personJsonLd = JSON.stringify({
 	.chips {
 		display: flex;
 		flex-wrap: wrap;
+		align-items: center;
 		gap: 0.4em;
 		margin: 0;
 	}
 	.chip {
+		white-space: nowrap;
+		line-height: 1.6;
 		padding: 0.15em 0.7em;
 		border-radius: 999px;
 		background: rgb(var(--gray-light));
@@ -568,68 +585,137 @@ const personJsonLd = JSON.stringify({
 		line-height: 1.55;
 	}
 
-	/* ---------- AI band ---------- */
-	.ai-band {
-		margin-top: 3.5em;
-		background:
-			radial-gradient(ellipse at 85% 0%, rgba(192, 54, 44, 0.25), transparent 55%),
-			linear-gradient(160deg, #142640, #1f3a5f);
-		color: rgba(255, 255, 255, 0.88);
+	/* ---------- AI section ---------- */
+	.ai {
+		margin-top: 4.5em;
+		background: var(--fog);
+		border-top: 1px solid rgb(var(--gray-light));
+		border-bottom: 1px solid rgb(var(--gray-light));
 	}
 	.ai-inner {
+		display: grid;
+		grid-template-columns: 0.9fr 1.1fr;
+		gap: 3em;
 		width: 1080px;
 		max-width: calc(100% - 2em);
 		margin: 0 auto;
 		padding: 4.5em 0;
 	}
-	.ai-intro {
-		max-width: 40em;
-	}
-	.ai-band h2 {
-		color: #fff;
+	.ai-intro h2 {
 		margin-bottom: 0.5em;
 	}
-	.ai-intro p:last-child {
+	.ai-intro > p:not(.kicker) {
 		font-size: 0.95em;
-	}
-	.ai-cards {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		gap: 1.2em;
-		margin: 1.8em 0 2.2em;
-	}
-	.ai-card {
-		padding: 1.4em;
-		border-radius: 14px;
-		background: rgba(255, 255, 255, 0.06);
-		border: 1px solid rgba(255, 255, 255, 0.14);
-	}
-	.ai-card h3 {
-		margin: 0 0 0.4em;
-		font-size: 1.12em;
-		color: #fff;
-	}
-	.ai-card p {
-		margin: 0;
-		font-size: 0.84em;
-		line-height: 1.6;
+		color: rgb(var(--gray-dark));
 	}
 	.tools {
-		display: grid;
-		gap: 0.8em;
-	}
-	.tool-group {
-		display: grid;
-		grid-template-columns: 6em 1fr;
-		align-items: baseline;
-		gap: 1em;
+		margin-top: 1.8em;
 	}
 	.tool-label {
+		display: block;
+		margin-bottom: 0.6em;
 		font-size: 0.72em;
 		font-weight: 700;
 		letter-spacing: 0.12em;
 		text-transform: uppercase;
-		color: var(--sunset);
+		color: rgb(var(--gray));
+	}
+	.chip {
+		background: #fff;
+		border: 1px solid rgb(var(--gray-light));
+	}
+	.chip.is-ai {
+		background: var(--bay);
+		border-color: var(--bay);
+		color: #fff;
+	}
+	.flows {
+		display: grid;
+		gap: 1.2em;
+		align-content: start;
+	}
+	.flow {
+		position: relative;
+		padding: 1.4em 1.5em 1.3em;
+		border-radius: 16px;
+		background: #fff;
+		border: 1px solid rgb(var(--gray-light));
+		box-shadow: 0 1px 2px rgba(var(--black), 0.04);
+	}
+	.flow::before {
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 1.4em;
+		bottom: 1.4em;
+		width: 4px;
+		border-radius: 0 4px 4px 0;
+		background: var(--accent);
+	}
+	.flow-head {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		gap: 0.5em 1em;
+		margin-bottom: 0.8em;
+	}
+	.flow-head h3 {
+		margin: 0;
+		font-size: 1.15em;
+	}
+	.cadence {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4em;
+		padding: 0.2em 0.75em;
+		border-radius: 999px;
+		background: rgba(192, 54, 44, 0.08);
+		color: var(--accent-dark);
+		font-size: 0.72em;
+		font-weight: 700;
+		white-space: nowrap;
+	}
+	.steps {
+		list-style: none;
+		margin: 0 0 1em;
+		padding: 0;
+	}
+	.steps li {
+		position: relative;
+		padding-left: 1.6em;
+		margin-bottom: 0.45em;
+		font-size: 0.85em;
+		line-height: 1.5;
+	}
+	.steps li::before {
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 0.3em;
+		width: 1em;
+		height: 1em;
+		border-radius: 50%;
+		background: var(--bay)
+			url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 8.5l2.5 2.5L12 5.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
+			center / 75% no-repeat;
+	}
+	.result {
+		margin: 0;
+		padding-top: 0.9em;
+		border-top: 1px dashed rgb(var(--gray-light));
+		font-size: 0.88em;
+		font-weight: 700;
+		color: rgb(var(--black));
+	}
+	.result-label {
+		display: block;
+		margin-bottom: 0.15em;
+		font-size: 0.8em;
+		font-weight: 700;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: var(--accent);
 	}
 
 	/* ---------- Education ---------- */
@@ -707,6 +793,10 @@ const personJsonLd = JSON.stringify({
 
 	/* ---------- Responsive ---------- */
 	@media (max-width: 900px) {
+		.ai-inner {
+			grid-template-columns: 1fr;
+			gap: 2em;
+		}
 		.stats {
 			grid-template-columns: repeat(2, 1fr);
 		}
@@ -748,7 +838,6 @@ const personJsonLd = JSON.stringify({
 			font-size: 1.5em;
 		}
 		.strengths,
-		.ai-cards,
 		.edu {
 			grid-template-columns: 1fr;
 		}
@@ -756,9 +845,10 @@ const personJsonLd = JSON.stringify({
 			grid-template-columns: 1fr;
 			gap: 0.3em;
 		}
-		.tool-group {
+		.ai-inner {
 			grid-template-columns: 1fr;
-			gap: 0.3em;
+			gap: 2em;
+			padding: 3.5em 0;
 		}
 		.contact-text {
 			padding: 2.2em 1.4em 3em;
