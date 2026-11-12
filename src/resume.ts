@@ -12,12 +12,12 @@ export const PROFILE = {
 	headshotSmall: '/photos/headshot-square-320.webp',
 	portrait: '/photos/headshot-portrait-720.webp',
 	summary:
-		'Executive Assistant with 8 years of experience supporting partners and senior investment leaders at private equity and venture capital firms in San Francisco. Skilled in complex calendar management, international travel, investor relations and office operations, with a reputation for sound judgment, discretion and anticipating executive needs.',
+		'Executive Assistant with 8 years of experience supporting partners and senior investment leaders most recently at private equity firms in San Francisco. Skilled in complex calendar management, international travel, investor relations and office operations, with a reputation for sound judgment, discretion and anticipating executive needs.',
 };
 
 export const STATS = [
-	{ value: '8 years', label: 'supporting partners at PE and VC firms' },
-	{ value: '$1B+', label: 'fundraise I helped support at Owl Ventures' },
+	{ value: '8 years', label: 'supporting partners and investment leaders' },
+	{ value: '10-person', label: 'office I ran on my own at CVC' },
 	{ value: '6', label: 'investment leaders I supported at once at CVC' },
 	{ value: '3× a week', label: 'partner calendars checked by a workflow I built' },
 ];

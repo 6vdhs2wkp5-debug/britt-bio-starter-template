@@ -3,4 +3,4 @@
 
 export const SITE_TITLE = "Brittany Helm";
 export const SITE_DESCRIPTION =
-	"Brittany Helm: Executive Assistant and Office Manager in San Francisco with 8 years supporting private equity and venture capital partners.";
+	"Brittany Helm: Executive Assistant and Office Manager in San Francisco with 8 years supporting partners and senior investment leaders, most recently in private equity.";
