@@ -30,7 +30,7 @@ export const BOOK_CALL = {
 
 export const STATS = [
 	{ value: '8 years', label: 'of executive support for partners and investment leaders' },
-	{ value: '6 leaders', label: 'supported at once at a global private equity firm' },
+	{ value: 'People first', label: 'caring about executives’ wellbeing, families and lives' },
 	{ value: 'Custom AI', label: 'workflows designed and built for each partner' },
 	{ value: 'Any size', label: 'from small offices to global firms' },
 ];
