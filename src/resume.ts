@@ -16,10 +16,10 @@ export const PROFILE = {
 };
 
 export const STATS = [
-	{ value: '8 years', label: 'supporting partners and investment leaders' },
-	{ value: 'Any size', label: 'successful in small offices and global firms alike' },
-	{ value: '6', label: 'investment leaders I supported at once at CVC' },
-	{ value: '3× a week', label: 'partner calendars checked by a workflow I built' },
+	{ value: '8 years', label: 'of executive support for partners and investment leaders' },
+	{ value: '6 leaders', label: 'supported at once at a global private equity firm' },
+	{ value: '3× a week', label: 'AI-powered calendar checks I designed' },
+	{ value: 'Any size', label: 'from small offices to global firms' },
 ];
 
 export const STRENGTHS = [
