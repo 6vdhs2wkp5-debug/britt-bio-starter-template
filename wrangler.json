@@ -2,16 +2,8 @@
 	"name": "britt-bio-starter-template",
 	"compatibility_date": "2025-10-08",
 	"compatibility_flags": ["nodejs_compat"],
-	"routes": [
-		{
-			"pattern": "brittanyhelm.com",
-			"custom_domain": true
-		},
-		{
-			"pattern": "www.brittanyhelm.com",
-			"custom_domain": true
-		}
-	],
+	"workers_dev": false,
+	"preview_urls": false,
 	"main": "./dist/_worker.js/index.js",
 	"assets": {
 		"directory": "./dist",
