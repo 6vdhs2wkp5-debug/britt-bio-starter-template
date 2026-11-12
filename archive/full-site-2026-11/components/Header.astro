@@ -1,0 +1,100 @@
+---
+import HeaderLink from './HeaderLink.astro';
+import { SITE_TITLE } from '../consts';
+import { PROFILE } from '../resume';
+---
+
+<header>
+	<nav>
+		<a class="brand" href="/">
+			<img src="/favicon.svg" alt="" width="28" height="28" />
+			<span>{SITE_TITLE}</span>
+		</a>
+		<div class="internal-links">
+			<a class="hide-sm" href="/#experience">Experience</a>
+			<a class="hide-sm" href="/#ai">AI workflows</a>
+			<HeaderLink href="/about">About</HeaderLink>
+			<a class="resume-btn" href={PROFILE.resume} download>Résumé</a>
+		</div>
+	</nav>
+</header>
+<style>
+	header {
+		position: sticky;
+		top: 0;
+		z-index: 10;
+		margin: 0;
+		padding: 0 1em;
+		background: rgba(250, 249, 247, 0.85);
+		backdrop-filter: saturate(1.4) blur(10px);
+		-webkit-backdrop-filter: saturate(1.4) blur(10px);
+		border-bottom: 1px solid rgb(var(--gray-light));
+	}
+	nav {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		max-width: 1080px;
+		margin: 0 auto;
+	}
+	.brand {
+		display: flex;
+		align-items: center;
+		gap: 0.55em;
+		padding: 0.6em 0;
+		color: rgb(var(--black));
+		font-family: var(--serif);
+		font-weight: 700;
+		font-size: 1.05em;
+		text-decoration: none;
+	}
+	.brand img {
+		border-radius: 7px;
+	}
+	.internal-links {
+		display: flex;
+		align-items: center;
+		gap: 0.25em;
+	}
+	nav .internal-links a.resume-btn {
+		margin-left: 0.5em;
+		padding: 0.35em 1em;
+		border: 0;
+		border-radius: 999px;
+		background: var(--ink);
+		color: #fff;
+		font-weight: 700;
+	}
+	nav .internal-links a.resume-btn:hover {
+		background: var(--ink-dark);
+		color: #fff;
+	}
+	nav .internal-links a {
+		padding: 1em 0.6em;
+		color: rgb(var(--gray-dark));
+		border-bottom: 3px solid transparent;
+		text-decoration: none;
+		font-size: 0.9em;
+	}
+	nav .internal-links a:hover {
+		color: var(--accent);
+	}
+	nav .internal-links a.active {
+		color: rgb(var(--black));
+		text-decoration: none;
+		border-bottom-color: var(--accent);
+	}
+	@media (max-width: 640px) {
+		.hide-sm {
+			display: none;
+		}
+	}
+	@media (max-width: 520px) {
+		.brand span {
+			font-size: 0.95em;
+		}
+		nav .internal-links a {
+			padding: 1em 0.4em;
+		}
+	}
+</style>

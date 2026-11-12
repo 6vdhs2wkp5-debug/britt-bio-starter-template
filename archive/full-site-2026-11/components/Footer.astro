@@ -1,0 +1,67 @@
+---
+import { SITE_TITLE } from '../consts';
+import { PROFILE, BOOK_CALL } from '../resume';
+const today = new Date();
+---
+
+<footer>
+	<svg class="skyline" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true">
+		<path
+			d="M0 60 V44 Q90 26 180 40 T360 34 L380 34 V20 H392 V34 L470 36 Q560 22 640 38 L660 38 L668 6 L676 38 L720 38 V26 H736 V38 H760 V18 H778 V38 L840 40 Q960 20 1060 36 T1200 32 V60 Z"
+		></path>
+	</svg>
+	<div class="inner">
+		<p class="made">Based in San Francisco, California</p>
+		<p class="links">
+			<a href={BOOK_CALL.href} target={BOOK_CALL.external ? '_blank' : undefined} rel={BOOK_CALL.external ? 'noopener' : undefined}>Book a call</a>
+			<a href={`mailto:${PROFILE.email}`}>Email</a>
+			<a href={PROFILE.linkedin} target="_blank" rel="noopener">LinkedIn</a>
+			<a href={PROFILE.resume} download>Résumé</a>
+		</p>
+		<p class="copy">&copy; {today.getFullYear()} {SITE_TITLE}</p>
+	</div>
+</footer>
+<style>
+	footer {
+		margin-top: 4em;
+		color: rgba(255, 255, 255, 0.82);
+		text-align: center;
+	}
+	.skyline {
+		display: block;
+		width: 100%;
+		height: 48px;
+		fill: var(--ink);
+	}
+	.inner {
+		background: var(--ink);
+		padding: 1.5em 1em 3em;
+	}
+	.made {
+		margin: 0 0 0.25em;
+		font-family: var(--serif);
+		font-size: 1.05em;
+		color: #fff;
+	}
+	.links {
+		display: flex;
+		justify-content: center;
+		gap: 1.4em;
+		margin: 0.8em 0;
+		font-size: 0.85em;
+		font-weight: 700;
+	}
+	.links a {
+		color: #fff;
+		text-decoration: none;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+	}
+	.links a:hover {
+		color: var(--champagne);
+	}
+	.copy {
+		margin: 0;
+		font-size: 0.8em;
+		letter-spacing: 0.04em;
+	}
+</style>
