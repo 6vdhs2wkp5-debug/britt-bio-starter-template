@@ -24,28 +24,28 @@ export const STATS = [
 
 export const STRENGTHS = [
 	{
-		title: 'Calendars that hold up',
-		body: 'Busy, multi-time-zone calendars for partners and deal teams. I catch the conflicts and prep gaps before they turn into problems.',
+		title: 'Calendar management',
+		body: 'Busy, multi-time-zone calendars for partners and deal teams, with conflicts and prep gaps caught before they become problems.',
 	},
 	{
 		title: 'Travel and events',
-		body: 'Investor meetings, advisory boards, offsites and group travel, from booking the venue to running the day itself.',
+		body: 'Investor meetings, advisory boards, offsites and group travel, managed from first booking through the day itself.',
 	},
 	{
-		title: 'People who trust me',
-		body: 'Portfolio CEOs, LPs and board members know they can come straight to me, and that it will get handled.',
+		title: 'Trusted relationships',
+		body: 'Go-to contact for portfolio CEOs, LPs and board members, who know their requests will be handled.',
 	},
 	{
-		title: 'An office that just works',
-		body: 'I ran a 10-person office on my own: a move, vendors, IT, guests, lunches and the monthly invoices.',
+		title: 'Office operations',
+		body: 'Independently ran a 10-person office: an office move, vendors, IT, guests, catering and monthly invoicing.',
 	},
 	{
-		title: 'AI workflows, made to fit',
-		body: 'I design and build AI workflows around how each partner works, so routine tasks run smoothly and nothing slips.',
+		title: 'Custom AI workflows',
+		body: 'AI workflows designed around how each partner works, so routine tasks run smoothly and nothing slips.',
 	},
 	{
-		title: 'Discreet, always',
-		body: 'Sensitive deals, personal logistics, family plans. Executives trust me with all of it.',
+		title: 'Discretion',
+		body: 'Sensitive deals, personal logistics and family plans, all handled with complete confidentiality.',
 	},
 ];
 
@@ -63,7 +63,7 @@ export const EXPERIENCE: Role[] = [
 		company: 'Centana Growth Partners',
 		dates: 'Mar 2026 – Oct 2026',
 		highlights: [
-			'Supported a founding partner, a partner and their deal teams, and ran the firm-wide calendar. I was a go-to contact for portfolio CEOs, LPs and advisory board members.',
+			'Supported a founding partner, a partner and their deal teams, and ran the firm-wide calendar. Served as a go-to contact for portfolio CEOs, LPs and advisory board members.',
 			'Planned the annual investor meeting, two advisory board meetings, three partner offsites and two company offsites, from vendors and budgets to running the day.',
 			'Designed and built AI workflows tailored to each partner, from calendar reviews to expense reconciliation.',
 		],
@@ -76,7 +76,7 @@ export const EXPERIENCE: Role[] = [
 		highlights: [
 			'Supported six senior investment leaders at a fast-moving private equity firm, juggling competing priorities and sensitive matters.',
 			'Owned their calendars across time zones and all of their travel, including visas and last-minute changes.',
-			'Ran the 10-person West Coast office on my own across the Financial District and the Presidio, plus multi-currency expense reporting and the annual carbon-emissions report.',
+			'Independently ran the 10-person West Coast office across the Financial District and the Presidio, plus multi-currency expense reporting and the annual carbon-emissions report.',
 		],
 		strengths: ['Complex Calendaring', 'International Travel', 'Office Operations', 'Confidentiality'],
 	},
@@ -86,7 +86,7 @@ export const EXPERIENCE: Role[] = [
 		dates: 'Sep 2018 – Jan 2021',
 		highlights: [
 			'Supported 3 employees through a $1B+ fundraise from LPs.',
-			'Ran Diversity & Inclusion reporting across our portfolio CEOs and co-led the Education & Outcomes Report for LPs.',
+			'Ran Diversity & Inclusion reporting across portfolio CEOs and co-led the Education & Outcomes Report for LPs.',
 			'Onboarded two new employees remotely and led company-wide expense reporting.',
 		],
 		strengths: ['Investor Relations', 'Data Analysis', 'Report Writing', 'Onboarding'],
@@ -124,24 +124,24 @@ export const AI_WORKFLOWS: Workflow[] = [
 		step: '01',
 		title: 'Design',
 		points: [
-			'Learn how each partner works: priorities, preferences and pain points',
-			'Pick the routine tasks worth handing to AI',
+			'Mapping each partner’s priorities, preferences and pain points',
+			'Identifying the routine tasks best suited to AI',
 		],
 	},
 	{
 		step: '02',
 		title: 'Build',
 		points: [
-			'Construct workflows in Claude, ChatGPT and Copilot',
-			'Cover calendar reviews, expense reconciliation, meeting prep and more',
+			'Constructing workflows in Claude, ChatGPT and Copilot',
+			'Covering calendar reviews, expense reconciliation, meeting prep and more',
 		],
 	},
 	{
 		step: '03',
 		title: 'Set guidelines',
 		points: [
-			'Write clear rules so every workflow runs the same way each time',
-			'Review the results and adjust as needs change',
+			'Writing clear rules so every workflow runs consistently',
+			'Reviewing results and refining as needs change',
 		],
 	},
 ];
