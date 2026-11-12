@@ -6,8 +6,8 @@
 
 :root {
 	/* San Francisco palette */
-	--accent: #c0362c; /* Golden Gate "International Orange" */
-	--accent-dark: #8f2219;
+	--accent: #b5573f; /* terracotta: warm clay, softer than bridge red */
+	--accent-dark: #93432f;
 	--bay: #1f3a5f; /* deep bay water */
 	--fog: #eceae6; /* Karl the Fog */
 	--sunset: #f4c7a1;
