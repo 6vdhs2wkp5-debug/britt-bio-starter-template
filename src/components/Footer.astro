@@ -11,7 +11,7 @@ const today = new Date();
 		></path>
 	</svg>
 	<div class="inner">
-		<p class="made">Made in San Francisco, usually under a blanket of fog.</p>
+		<p class="made">Based in San Francisco, California</p>
 		<p class="links">
 			<a href={BOOK_CALL.href} target={BOOK_CALL.external ? '_blank' : undefined} rel={BOOK_CALL.external ? 'noopener' : undefined}>Book a call</a>
 			<a href={`mailto:${PROFILE.email}`}>Email</a>
@@ -31,10 +31,10 @@ const today = new Date();
 		display: block;
 		width: 100%;
 		height: 48px;
-		fill: var(--bay);
+		fill: var(--ink);
 	}
 	.inner {
-		background: var(--bay);
+		background: var(--ink);
 		padding: 1.5em 1em 3em;
 	}
 	.made {
@@ -57,7 +57,7 @@ const today = new Date();
 		border-bottom: 1px solid rgba(255, 255, 255, 0.35);
 	}
 	.links a:hover {
-		color: var(--sunset);
+		color: var(--champagne);
 	}
 	.copy {
 		margin: 0;

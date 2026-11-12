@@ -8,6 +8,9 @@
 	/* San Francisco palette */
 	--accent: #b5573f; /* terracotta: warm clay, softer than bridge red */
 	--accent-dark: #93432f;
+	--ink: #13233a; /* deep ink navy: primary actions and key figures */
+	--ink-dark: #0b1626;
+	--champagne: #e6d4bd; /* muted warm neutral for text on dark photos */
 	--bay: #1f3a5f; /* deep bay water */
 	--fog: #eceae6; /* Karl the Fog */
 	--sunset: #f4c7a1;

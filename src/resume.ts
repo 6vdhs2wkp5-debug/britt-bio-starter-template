@@ -46,15 +46,15 @@ export const STRENGTHS = [
 	},
 	{
 		title: 'Trusted relationships',
-		body: 'Go-to contact for portfolio CEOs, LPs and board members, who know their requests will be handled.',
+		body: 'The first call for portfolio CEOs, LPs and board members, who know every request will be handled.',
 	},
 	{
 		title: 'Office operations',
-		body: 'Independently ran a 10-person office: an office move, vendors, IT, guests, catering and monthly invoicing.',
+		body: 'Office moves, vendors, IT, guests, catering and invoicing, managed so the office simply runs.',
 	},
 	{
-		title: 'Custom AI workflows',
-		body: 'AI workflows designed around how each partner works, so routine tasks run smoothly and nothing slips.',
+		title: 'Expenses and reporting',
+		body: 'Multi-currency expense reports, reimbursements and LP-facing reports, accurate and on time.',
 	},
 	{
 		title: 'Discretion',
@@ -87,9 +87,9 @@ export const EXPERIENCE: Role[] = [
 		company: 'CVC Advisors',
 		dates: 'Sep 2021 – Mar 2026',
 		highlights: [
-			'Supported six senior investment leaders at a fast-moving private equity firm, juggling competing priorities and sensitive matters.',
-			'Owned their calendars across time zones and all of their travel, including visas and last-minute changes.',
-			'Independently ran the 10-person West Coast office across the Financial District and the Presidio, plus multi-currency expense reporting and the annual carbon-emissions report.',
+			'Supported six senior investment leaders at a fast-moving private equity firm, balancing competing priorities and sensitive matters.',
+			'Managed multi-time-zone calendars and all domestic and international travel, including visas and last-minute changes.',
+			'Independently ran the 10-person West Coast office across the Financial District and the Presidio, and led multi-currency expense and annual carbon-emissions reporting.',
 		],
 		strengths: ['Complex Calendaring', 'International Travel', 'Office Operations', 'Confidentiality'],
 	},
@@ -98,7 +98,7 @@ export const EXPERIENCE: Role[] = [
 		company: 'Owl Ventures',
 		dates: 'Sep 2018 – Jan 2021',
 		highlights: [
-			'Supported 3 employees through a $1B+ fundraise from LPs.',
+			'Supported a three-person team through a $1B+ fundraise from LPs.',
 			'Ran Diversity & Inclusion reporting across portfolio CEOs and co-led the Education & Outcomes Report for LPs.',
 			'Onboarded two new employees remotely and led company-wide expense reporting.',
 		],
