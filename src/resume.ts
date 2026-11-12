@@ -17,7 +17,7 @@ export const PROFILE = {
 
 export const STATS = [
 	{ value: '8 years', label: 'supporting partners and investment leaders' },
-	{ value: '10-person', label: 'office I ran on my own at CVC' },
+	{ value: 'Any size', label: 'successful in small offices and global firms alike' },
 	{ value: '6', label: 'investment leaders I supported at once at CVC' },
 	{ value: '3× a week', label: 'partner calendars checked by a workflow I built' },
 ];
