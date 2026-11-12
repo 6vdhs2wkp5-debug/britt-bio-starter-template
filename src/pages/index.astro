@@ -479,7 +479,8 @@ const personJsonLd = JSON.stringify({
 	}
 	.stat-value {
 		font-family: var(--serif);
-		font-size: 1.9em;
+		font-size: 1.62em;
+		white-space: nowrap;
 		font-weight: 700;
 		line-height: 1;
 		color: var(--accent);
@@ -807,7 +808,12 @@ const personJsonLd = JSON.stringify({
 			padding: 1em;
 		}
 		.stat-value {
-			font-size: 1.5em;
+			font-size: 1.22em;
+		}
+	}
+	@media (max-width: 480px) {
+		.stat-value {
+			white-space: normal;
 		}
 		.strengths,
 		.edu {
