@@ -8,11 +8,24 @@ export const PROFILE = {
 	email: 'Brittany.helm92@gmail.com',
 	linkedin: 'https://www.linkedin.com/in/brittany-helm345',
 	resume: '/Brittany-Helm-Resume.pdf',
+	// Paste a Calendly or Google Calendar booking-page link here. While it's empty,
+	// "Book a call" opens a pre-filled email instead.
+	bookingUrl: '',
 	headshot: '/photos/headshot-square-640.webp',
 	headshotSmall: '/photos/headshot-square-320.webp',
 	portrait: '/photos/headshot-portrait-720.webp',
 	summary:
 		'Executive Assistant with 8 years of experience supporting partners and senior investment leaders most recently at private equity firms in San Francisco. Skilled in complex calendar management, international travel, investor relations and office operations, with a reputation for sound judgment, discretion and anticipating executive needs.',
+};
+
+// Where every "Book a call" button points.
+export const BOOK_CALL = {
+	href:
+		PROFILE.bookingUrl ||
+		`mailto:${PROFILE.email}?subject=${encodeURIComponent("Let's set up a call")}&body=${encodeURIComponent(
+			'Hi Brittany,\n\nI came across your website and would love to set up a quick call. A few times that work for me:\n\n',
+		)}`,
+	external: Boolean(PROFILE.bookingUrl),
 };
 
 export const STATS = [

@@ -4,7 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import PhotoCredit from '../components/PhotoCredit.astro';
 import { PHOTOS } from '../photos';
-import { PROFILE, EDUCATION } from '../resume';
+import { PROFILE, EDUCATION, BOOK_CALL } from '../resume';
 
 const banner = PHOTOS.aerial;
 ---
@@ -95,7 +95,8 @@ const banner = PHOTOS.aerial;
 				</p>
 
 				<div class="cta">
-					<a class="button primary" href={`mailto:${PROFILE.email}`}>Email me</a>
+					<a class="button primary" href={BOOK_CALL.href} target={BOOK_CALL.external ? '_blank' : undefined} rel={BOOK_CALL.external ? 'noopener' : undefined}>Book a call</a>
+					<a class="button ghost" href={`mailto:${PROFILE.email}`}>Email me</a>
 					<a class="button ghost" href={PROFILE.linkedin} target="_blank" rel="noopener">LinkedIn</a>
 					<a class="button ghost" href={PROFILE.resume} download>Résumé (PDF)</a>
 				</div>

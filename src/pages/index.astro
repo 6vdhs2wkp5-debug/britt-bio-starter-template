@@ -12,6 +12,7 @@ import {
 	EXPERIENCE,
 	AI_WORKFLOWS,
 	TOOLS,
+	BOOK_CALL,
 	EDUCATION,
 } from '../resume';
 
@@ -81,8 +82,8 @@ const personJsonLd = JSON.stringify({
 				<span class="bar" aria-hidden="true"></span>
 				<div class="actions">
 					<a class="button primary" href={PROFILE.resume} download>Download résumé</a>
+					<a class="button ghost" href={BOOK_CALL.href} target={BOOK_CALL.external ? '_blank' : undefined} rel={BOOK_CALL.external ? 'noopener' : undefined}>Book a call</a>
 					<a class="button ghost" href={PROFILE.linkedin} target="_blank" rel="noopener">LinkedIn</a>
-					<a class="button ghost" href={`mailto:${PROFILE.email}`}>Email me</a>
 				</div>
 				<p class="status"><span class="dot" aria-hidden="true"></span>Open to new EA and office manager roles in the Bay Area</p>
 			</div>
@@ -233,9 +234,10 @@ const personJsonLd = JSON.stringify({
 				<div class="contact-shade" aria-hidden="true"></div>
 				<div class="contact-text">
 					<h2 id="contact-title">Let's talk</h2>
-					<p>Hiring an executive assistant or office manager in San Francisco? Let's connect.</p>
+					<p>Hiring an executive assistant or office manager in San Francisco? Book a quick call or send a note.</p>
 					<div class="actions">
-						<a class="button primary" href={`mailto:${PROFILE.email}`}>Email me</a>
+						<a class="button primary" href={BOOK_CALL.href} target={BOOK_CALL.external ? '_blank' : undefined} rel={BOOK_CALL.external ? 'noopener' : undefined}>Book a call</a>
+						<a class="button ghost" href={`mailto:${PROFILE.email}`}>Email me</a>
 						<a class="button ghost" href={PROFILE.linkedin} target="_blank" rel="noopener">Connect on LinkedIn</a>
 						<a class="button ghost" href={PROFILE.resume} download>Résumé (PDF)</a>
 					</div>
