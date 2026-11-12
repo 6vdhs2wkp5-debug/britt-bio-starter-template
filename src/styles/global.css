@@ -6,14 +6,15 @@
 
 :root {
 	/* San Francisco palette */
-	--accent: #b5573f; /* terracotta: warm clay, softer than bridge red */
-	--accent-dark: #93432f;
+	--accent: #80633a; /* antique gold, deep enough for small text */
+	--accent-dark: #6b5230;
+	--gold: #a8875a; /* light antique gold for rings, rules and dots */
 	--ink: #13233a; /* deep ink navy: primary actions and key figures */
 	--ink-dark: #0b1626;
 	--champagne: #e6d4bd; /* muted warm neutral for text on dark photos */
 	--bay: #1f3a5f; /* deep bay water */
 	--fog: #eceae6; /* Karl the Fog */
-	--sunset: #f4c7a1;
+	--sunset: #c4a374;
 	--black: 22, 33, 52;
 	--gray: 88, 99, 116;
 	--gray-light: 226, 224, 219;
