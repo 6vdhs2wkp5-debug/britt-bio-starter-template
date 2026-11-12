@@ -18,7 +18,7 @@ export const PROFILE = {
 export const STATS = [
 	{ value: '8 years', label: 'of executive support for partners and investment leaders' },
 	{ value: '6 leaders', label: 'supported at once at a global private equity firm' },
-	{ value: '3× a week', label: 'AI-powered calendar checks I designed' },
+	{ value: 'Custom AI', label: 'workflows designed and built for each partner' },
 	{ value: 'Any size', label: 'from small offices to global firms' },
 ];
 
@@ -40,8 +40,8 @@ export const STRENGTHS = [
 		body: 'I ran a 10-person office on my own: a move, vendors, IT, guests, lunches and the monthly invoices.',
 	},
 	{
-		title: 'Smart about the busywork',
-		body: 'I use AI for the repetitive checks, so my time goes to the people and the judgment calls.',
+		title: 'AI workflows, made to fit',
+		body: 'I design and build AI workflows around how each partner works, so routine tasks run smoothly and nothing slips.',
 	},
 	{
 		title: 'Discreet, always',
@@ -65,7 +65,7 @@ export const EXPERIENCE: Role[] = [
 		highlights: [
 			'Supported a founding partner, a partner and their deal teams, and ran the firm-wide calendar. I was a go-to contact for portfolio CEOs, LPs and advisory board members.',
 			'Planned the annual investor meeting, two advisory board meetings, three partner offsites and two company offsites, from vendors and budgets to running the day.',
-			'Built AI workflows that check both partners’ calendars three times a week and match calendars to expenses every month.',
+			'Designed and built AI workflows tailored to each partner, from calendar reviews to expense reconciliation.',
 		],
 		strengths: ['Event Planning', 'Calendar Management', 'Stakeholder Engagement', 'AI Workflow Design'],
 	},
@@ -113,31 +113,36 @@ export const EXPERIENCE: Role[] = [
 ];
 
 export interface Workflow {
+	step: string;
 	title: string;
-	when: string;
-	does: string[];
-	result: string;
+	points: string[];
 }
 
+// How Brittany approaches AI workflows: general, not tied to one firm.
 export const AI_WORKFLOWS: Workflow[] = [
 	{
-		title: 'Partner calendar check',
-		when: 'Three times a week',
-		does: [
-			'Scans both partners’ calendars for conflicts',
-			'Reviews recurring internal and external meetings, including 1:1s with portfolio CEOs',
-			'Flags anything that needs a fix',
+		step: '01',
+		title: 'Design',
+		points: [
+			'Learn how each partner works: priorities, preferences and pain points',
+			'Pick the routine tasks worth handing to AI',
 		],
-		result: 'Issues get sorted before the partners ever see them.',
 	},
 	{
-		title: 'Calendar-to-expense match',
-		when: 'Once a month',
-		does: [
-			'Lines up each partner’s calendar with their logged expenses',
-			'Spots anything missing or allocated to the wrong place',
+		step: '02',
+		title: 'Build',
+		points: [
+			'Construct workflows in Claude, ChatGPT and Copilot',
+			'Cover calendar reviews, expense reconciliation, meeting prep and more',
 		],
-		result: 'More accurate allocations, and every expense gets reimbursed.',
+	},
+	{
+		step: '03',
+		title: 'Set guidelines',
+		points: [
+			'Write clear rules so every workflow runs the same way each time',
+			'Review the results and adjust as needs change',
+		],
 	},
 ];
 

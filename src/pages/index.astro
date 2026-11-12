@@ -162,11 +162,11 @@ const personJsonLd = JSON.stringify({
 			<div class="ai-inner">
 				<div class="ai-intro">
 					<p class="kicker">How I use AI</p>
-					<h2 id="ai-title">I let AI handle the busywork</h2>
+					<h2 id="ai-title">AI workflows built around each partner</h2>
 					<p>
-						The repetitive checks run on a schedule now, which frees me up for the parts of the job
-						that need a person: the conversations, the judgment calls, the small things that make a
-						partner's day go smoothly. Here are two workflows I built and ran at Centana.
+						Every partner works differently, so I don't use one-size-fits-all tools. I design, build and
+						set guidelines for AI workflows customized to each person I support. Routine work runs
+						reliably, and my time goes to the people and the judgment calls.
 					</p>
 					<div class="tools">
 						<span class="tool-label">Tools I use every day</span>
@@ -184,24 +184,14 @@ const personJsonLd = JSON.stringify({
 						AI_WORKFLOWS.map((w) => (
 							<article class="flow">
 								<header class="flow-head">
+									<span class="step-num">{w.step}</span>
 									<h3>{w.title}</h3>
-									<span class="cadence">
-										<svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true">
-											<circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.6" />
-											<path d="M8 4.5V8l2.5 1.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
-										</svg>
-										{w.when}
-									</span>
 								</header>
 								<ul class="steps">
-									{w.does.map((d) => (
+									{w.points.map((d) => (
 										<li>{d}</li>
 									))}
 								</ul>
-								<p class="result">
-									<span class="result-label">The result</span>
-									{w.result}
-								</p>
 							</article>
 						))
 					}
@@ -657,30 +647,27 @@ const personJsonLd = JSON.stringify({
 	.flow-head {
 		display: flex;
 		align-items: center;
-		justify-content: space-between;
-		flex-wrap: wrap;
-		gap: 0.5em 1em;
-		margin-bottom: 0.8em;
+		gap: 0.8em;
+		margin-bottom: 0.7em;
+	}
+	.step-num {
+		display: inline-grid;
+		place-items: center;
+		width: 2.1em;
+		height: 2.1em;
+		border-radius: 50%;
+		background: rgba(181, 87, 63, 0.1);
+		color: var(--accent-dark);
+		font-size: 0.75em;
+		font-weight: 700;
 	}
 	.flow-head h3 {
 		margin: 0;
 		font-size: 1.15em;
 	}
-	.cadence {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.4em;
-		padding: 0.2em 0.75em;
-		border-radius: 999px;
-		background: rgba(181, 87, 63, 0.08);
-		color: var(--accent-dark);
-		font-size: 0.72em;
-		font-weight: 700;
-		white-space: nowrap;
-	}
 	.steps {
 		list-style: none;
-		margin: 0 0 1em;
+		margin: 0;
 		padding: 0;
 	}
 	.steps li {
@@ -701,23 +688,6 @@ const personJsonLd = JSON.stringify({
 		background: var(--bay)
 			url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 8.5l2.5 2.5L12 5.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
 			center / 75% no-repeat;
-	}
-	.result {
-		margin: 0;
-		padding-top: 0.9em;
-		border-top: 1px dashed rgb(var(--gray-light));
-		font-size: 0.88em;
-		font-weight: 700;
-		color: rgb(var(--black));
-	}
-	.result-label {
-		display: block;
-		margin-bottom: 0.15em;
-		font-size: 0.8em;
-		font-weight: 700;
-		letter-spacing: 0.1em;
-		text-transform: uppercase;
-		color: var(--accent);
 	}
 
 	/* ---------- Education ---------- */
