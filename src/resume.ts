@@ -10,7 +10,7 @@ export const PROFILE = {
 	resume: '/Brittany-Helm-Resume.pdf',
 	// Paste a Calendly or Google Calendar booking-page link here. While it's empty,
 	// "Book a call" opens a pre-filled email instead.
-	bookingUrl: '',
+	bookingUrl: 'https://cal.com/brittanyhelm/intro-call',
 	headshot: '/photos/headshot-square-640.webp',
 	headshotSmall: '/photos/headshot-square-320.webp',
 	portrait: '/photos/headshot-portrait-720.webp',
