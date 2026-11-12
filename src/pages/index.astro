@@ -92,7 +92,7 @@ const personJsonLd = JSON.stringify({
 							target={BOOK_CALL.external ? '_blank' : undefined}
 							rel={BOOK_CALL.external ? 'noopener' : undefined}>Book a call</a
 						>
-						<a class="btn" href={PROFILE.resume} download>Download résumé</a>
+						<a class="btn" id="resume-btn" href={PROFILE.resume} target="_blank" rel="noopener">View Resume</a>
 					</div>
 
 					<p class="links">
@@ -105,6 +105,47 @@ const personJsonLd = JSON.stringify({
 				<footer class="foot">&copy; {year} {PROFILE.name} · San Francisco, California</footer>
 			</main>
 		</div>
+
+		<!-- Resume side panel (desktop/tablet); phones open the PDF in a new tab -->
+		<div class="drawer" id="resume-drawer" hidden>
+			<div class="drawer-backdrop" data-close></div>
+			<aside class="drawer-panel" role="dialog" aria-modal="true" aria-label={`${PROFILE.name} resume`}>
+				<header class="drawer-head">
+					<span class="drawer-title">{PROFILE.name} · Resume</span>
+					<div class="drawer-actions">
+						<a href={PROFILE.resume} download>Download PDF</a>
+						<button type="button" data-close aria-label="Close resume">&times;</button>
+					</div>
+				</header>
+				<iframe class="drawer-frame" title={`${PROFILE.name} resume`} data-src={`${PROFILE.resume}#view=FitH`}></iframe>
+			</aside>
+		</div>
+
+		<script>
+			const btn = document.getElementById('resume-btn') as HTMLAnchorElement | null;
+			const drawer = document.getElementById('resume-drawer');
+			const frame = drawer?.querySelector('iframe');
+			const wide = window.matchMedia('(min-width: 768px)');
+			function open(e: Event) {
+				if (!wide.matches || !drawer || !frame) return; // phones: follow the link to a new tab
+				e.preventDefault();
+				if (!frame.src) frame.src = frame.dataset.src || '';
+				drawer.hidden = false;
+				document.body.style.overflow = 'hidden';
+				(drawer.querySelector('button[data-close]') as HTMLButtonElement | null)?.focus();
+			}
+			function close() {
+				if (!drawer) return;
+				drawer.hidden = true;
+				document.body.style.overflow = '';
+				btn?.focus();
+			}
+			btn?.addEventListener('click', open);
+			drawer?.querySelectorAll('[data-close]').forEach((el) => el.addEventListener('click', close));
+			document.addEventListener('keydown', (e) => {
+				if (e.key === 'Escape' && drawer && !drawer.hidden) close();
+			});
+		</script>
 	</body>
 </html>
 
@@ -322,6 +363,100 @@ const personJsonLd = JSON.stringify({
 		font-size: 0.72rem;
 		letter-spacing: 0.04em;
 		color: #8a8f99;
+	}
+
+	/* ---------- Resume side panel ---------- */
+	.drawer {
+		--ivory: #f7f4ee;
+		--navy: #13233a;
+		--gold: #a8875a;
+		--rule: #e3dccf;
+		position: fixed;
+		inset: 0;
+		z-index: 50;
+	}
+	.drawer[hidden] {
+		display: none;
+	}
+	.drawer-backdrop {
+		position: absolute;
+		inset: 0;
+		background: rgba(11, 20, 36, 0.55);
+		animation: fade 0.2s ease;
+	}
+	.drawer-panel {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		width: min(760px, 92vw);
+		display: flex;
+		flex-direction: column;
+		background: var(--ivory);
+		border-left: 3px solid var(--gold);
+		box-shadow: -20px 0 50px rgba(0, 0, 0, 0.35);
+		animation: slide 0.25s ease;
+	}
+	.drawer-head {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+		padding: 0.9rem 1.2rem;
+		border-bottom: 1px solid var(--rule);
+	}
+	.drawer-title {
+		font-family: var(--serif);
+		font-size: 1.05rem;
+		color: var(--navy);
+	}
+	.drawer-actions {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+	}
+	.drawer-actions a {
+		font-size: 0.72rem;
+		font-weight: 700;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: var(--navy);
+		text-decoration: none;
+		border-bottom: 1px solid var(--gold);
+	}
+	.drawer-actions button {
+		width: 2.2rem;
+		height: 2.2rem;
+		border: 1px solid var(--rule);
+		border-radius: 50%;
+		background: #fff;
+		color: var(--navy);
+		font-size: 1.3rem;
+		line-height: 1;
+		cursor: pointer;
+	}
+	.drawer-frame {
+		flex: 1;
+		width: 100%;
+		border: 0;
+		background: #fff;
+	}
+	@keyframes slide {
+		from {
+			transform: translateX(40px);
+			opacity: 0;
+		}
+	}
+	@keyframes fade {
+		from {
+			opacity: 0;
+		}
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.drawer-panel,
+		.drawer-backdrop {
+			animation: none;
+		}
 	}
 
 	/* ---------- Phones and tablets ---------- */
