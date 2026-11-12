@@ -78,7 +78,7 @@ const personJsonLd = JSON.stringify({
 				/>
 				<h1 id="hero-title">{PROFILE.name}</h1>
 				<p class="hero-role">{PROFILE.title}</p>
-				<p class="lede">Supporting partners and investment leaders in San Francisco</p>
+				<p class="lede">Warm, thoughtful support for partners and <br class="br-wide" />investment leaders in San&nbsp;Francisco</p>
 				<span class="bar" aria-hidden="true"></span>
 				<div class="actions">
 					<a class="button primary" href={PROFILE.resume} download>Download résumé</a>
@@ -415,6 +415,11 @@ const personJsonLd = JSON.stringify({
 		margin: 0 0 1.3em;
 		font-size: clamp(1rem, 1.9vw, 1.2rem);
 		color: rgba(255, 255, 255, 0.85);
+	}
+	@media (max-width: 720px) {
+		.br-wide {
+			display: none;
+		}
 	}
 	.bar {
 		display: block;
