@@ -6,7 +6,7 @@ export const PROFILE = {
 	title: 'Executive Assistant · Office Manager',
 	location: 'San Francisco, CA',
 	email: 'brittany@brittanyhelm.com',
-	linkedin: 'https://www.linkedin.com/in/brittany-helm345',
+	linkedin: 'https://www.linkedin.com/in/brittanyhelmsf',
 	resume: '/Brittany-Helm-Resume.pdf',
 	// Paste a Calendly or Google Calendar booking-page link here. While it's empty,
 	// "Book a call" opens a pre-filled email instead.
