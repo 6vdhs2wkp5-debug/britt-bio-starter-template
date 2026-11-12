@@ -32,7 +32,7 @@ export const STATS = [
 	{ value: '8 years', label: 'of executive support and office management' },
 	{ value: 'People first', label: 'caring about executives’ wellbeing, families and lives' },
 	{ value: 'Custom AI', label: 'workflows designed and built for each partner' },
-	{ value: 'Any size', label: 'from small offices to global firms' },
+	{ value: 'Adaptable', label: 'thriving in small offices and global firms alike' },
 ];
 
 export const STRENGTHS = [
