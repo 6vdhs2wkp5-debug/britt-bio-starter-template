@@ -4,10 +4,6 @@
 	"compatibility_flags": ["nodejs_compat"],
 	"routes": [
 		{
-			"pattern": "brittanyhelm.com",
-			"custom_domain": true
-		},
-		{
 			"pattern": "www.brittanyhelm.com",
 			"custom_domain": true
 		}
