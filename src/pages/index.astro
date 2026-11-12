@@ -70,24 +70,21 @@ const personJsonLd = JSON.stringify({
 					class="avatar"
 					src={PROFILE.headshotSmall}
 					srcset={`${PROFILE.headshotSmall} 320w, ${PROFILE.headshot} 640w`}
-					sizes="140px"
-					width="140"
-					height="140"
+					sizes="128px"
+					width="128"
+					height="128"
 					alt={`Portrait of ${PROFILE.name}`}
 				/>
-				<p class="eyebrow"><span>{PROFILE.title}</span><span class="sep" aria-hidden="true"> &nbsp;·&nbsp; </span><span class="loc">{PROFILE.location}</span></p>
 				<h1 id="hero-title">{PROFILE.name}</h1>
-				<p class="lede">
-					I'm an executive assistant and office manager in San Francisco. For eight years I've
-					supported partners and investment leaders, most recently in private equity, keeping their calendars,
-					travel, investor events and offices running so they can focus on the deals.
-				</p>
-				<p class="status"><span class="dot" aria-hidden="true"></span>Open to new EA and office manager roles in the Bay Area</p>
+				<p class="hero-role">{PROFILE.title}</p>
+				<p class="lede">8 years supporting partners and investment leaders in San Francisco</p>
+				<span class="bar" aria-hidden="true"></span>
 				<div class="actions">
 					<a class="button primary" href={PROFILE.resume} download>Download résumé</a>
 					<a class="button ghost" href={PROFILE.linkedin} target="_blank" rel="noopener">LinkedIn</a>
 					<a class="button ghost" href={`mailto:${PROFILE.email}`}>Email me</a>
 				</div>
+				<p class="status"><span class="dot" aria-hidden="true"></span>Open to new EA and office manager roles in the Bay Area</p>
 			</div>
 			<PhotoCredit photo={hero} class="hero-credit" />
 		</section>
@@ -398,42 +395,47 @@ const personJsonLd = JSON.stringify({
 	}
 	.avatar {
 		display: block;
-		width: 140px;
-		height: 140px;
-		margin-bottom: 1.2em;
+		width: 128px;
+		height: 128px;
+		margin-bottom: 1.4em;
 		border-radius: 50%;
 		object-fit: cover;
-		border: 3px solid rgba(255, 255, 255, 0.9);
+		border: 4px solid #fff;
 		box-shadow:
-			0 0 0 6px rgba(192, 54, 44, 0.55),
+			0 0 0 4px var(--accent),
 			0 12px 32px rgba(0, 0, 0, 0.45);
 	}
-	.eyebrow {
-		margin: 0 0 0.8em;
-		font-size: 0.74em;
-		font-weight: 700;
-		letter-spacing: 0.14em;
-		text-transform: uppercase;
-		color: var(--sunset);
-	}
 	.hero h1 {
-		margin: 0 0 0.3em;
-		font-size: clamp(2.8rem, 7.5vw, 5.2rem);
+		margin: 0 0 0.25em;
+		font-size: clamp(3rem, 8vw, 5.6rem);
 		line-height: 1;
 		color: #fff;
 		text-shadow: 0 2px 24px rgba(0, 0, 0, 0.4);
 	}
+	.hero-role {
+		margin: 0 0 0.45em;
+		font-size: clamp(1.3rem, 3vw, 1.9rem);
+		line-height: 1.25;
+		color: var(--sunset);
+	}
 	.lede {
-		max-width: 31em;
-		margin: 0 0 1.1em;
-		font-size: clamp(1.02rem, 2.1vw, 1.25rem);
-		color: rgba(255, 255, 255, 0.92);
+		max-width: 34em;
+		margin: 0 0 1.3em;
+		font-size: clamp(1rem, 1.9vw, 1.2rem);
+		color: rgba(255, 255, 255, 0.85);
+	}
+	.bar {
+		display: block;
+		width: 90px;
+		height: 6px;
+		margin-bottom: 2em;
+		background: var(--accent);
 	}
 	.status {
 		display: inline-flex;
 		align-items: center;
 		gap: 0.55em;
-		margin: 0 0 1.6em;
+		margin: 1.3em 0 0;
 		padding: 0.3em 0.9em;
 		border-radius: 999px;
 		background: rgba(255, 255, 255, 0.1);
@@ -814,16 +816,9 @@ const personJsonLd = JSON.stringify({
 		.hero {
 			align-items: flex-end;
 		}
-		.eyebrow .sep {
-			display: none;
-		}
 		.avatar {
-			width: 104px;
-			height: 104px;
-		}
-		.eyebrow .loc {
-			display: block;
-			margin-top: 0.3em;
+			width: 100px;
+			height: 100px;
 		}
 		.hero-shade {
 			background: linear-gradient(to top, rgba(9, 16, 30, 0.95) 0%, rgba(9, 16, 30, 0.7) 55%, rgba(9, 16, 30, 0.25) 100%);
