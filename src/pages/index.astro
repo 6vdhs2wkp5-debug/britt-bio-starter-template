@@ -365,6 +365,14 @@ const personJsonLd = JSON.stringify({
 		color: #8a8f99;
 	}
 
+	/* Visible keyboard focus */
+	.page a:focus-visible,
+	.drawer a:focus-visible,
+	.drawer button:focus-visible {
+		outline: 2px solid var(--gold);
+		outline-offset: 3px;
+	}
+
 	/* ---------- Resume side panel ---------- */
 	.drawer {
 		--ivory: #f7f4ee;

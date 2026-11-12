@@ -1,0 +1,78 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import { PROFILE } from '../resume';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`Page not found | ${PROFILE.name}`} description="This page doesn't exist." />
+		<meta name="robots" content="noindex" />
+	</head>
+	<body>
+		<main class="nf">
+			<p class="eyebrow">Page not found</p>
+			<h1>This page doesn't exist</h1>
+			<p class="text">The link may be mistyped or out of date.</p>
+			<a class="btn" href="/">Go to {PROFILE.name}'s homepage</a>
+		</main>
+	</body>
+</html>
+
+<style>
+	:global(body) {
+		background: #f7f4ee;
+	}
+	.nf {
+		min-height: 100vh;
+		min-height: 100svh;
+		width: auto;
+		max-width: 32rem;
+		margin: 0 auto;
+		padding: 2rem 1.4rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		box-sizing: border-box;
+		color: #13233a;
+	}
+	.eyebrow {
+		margin: 0 0 0.6rem;
+		font-size: 0.72rem;
+		font-weight: 700;
+		letter-spacing: 0.2em;
+		text-transform: uppercase;
+		color: #a8875a;
+	}
+	h1 {
+		margin: 0 0 0.6rem;
+		font-family: var(--serif);
+		font-weight: 400;
+		font-size: clamp(2rem, 6vw, 2.8rem);
+		color: #13233a;
+	}
+	.text {
+		margin: 0 0 1.8rem;
+		color: #3c4a5e;
+	}
+	.btn {
+		align-self: flex-start;
+		padding: 0.85em 1.6em;
+		border-radius: 2px;
+		font-size: 0.78rem;
+		font-weight: 700;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		text-decoration: none;
+		background: #13233a;
+		color: #fff;
+	}
+	.btn:hover {
+		background: #0b1626;
+		color: #fff;
+	}
+	.btn:focus-visible {
+		outline: 2px solid #a8875a;
+		outline-offset: 3px;
+	}
+</style>
