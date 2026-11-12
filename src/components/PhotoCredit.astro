@@ -1,0 +1,29 @@
+---
+import type { Photo } from '../photos';
+
+interface Props {
+	photo: Photo;
+	class?: string;
+}
+
+const { photo, class: className } = Astro.props;
+---
+
+<small class:list={['credit', className]}>
+	Photo: <a href={photo.sourceUrl} rel="noopener">{photo.author}</a>,
+	<a href={photo.licenseUrl} rel="license noopener">{photo.license}</a>
+	({photo.changes})
+</small>
+
+<style>
+	.credit {
+		display: block;
+		font-size: 0.68rem;
+		line-height: 1.4;
+		letter-spacing: 0.02em;
+		opacity: 0.8;
+	}
+	.credit a {
+		color: inherit;
+	}
+</style>
