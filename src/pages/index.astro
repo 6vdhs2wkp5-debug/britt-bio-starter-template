@@ -66,10 +66,10 @@ const personJsonLd = JSON.stringify({
 					<p class="eyebrow">{PROFILE.title}</p>
 					<h1>{PROFILE.name}</h1>
 					<p class="lede">
-						Thoughtful, trusted support for partners and investment leaders in San&nbsp;Francisco.
+						Proactive, trusted support for partners and investment leaders.
 					</p>
 
-					<p class="status"><span class="dot" aria-hidden="true"></span>Available for new roles · Bay Area</p>
+					<p class="status"><span class="dot" aria-hidden="true"></span>Based in San Francisco · Available for new roles</p>
 
 					<dl class="facts">
 						{
@@ -116,24 +116,26 @@ const personJsonLd = JSON.stringify({
 		--navy-soft: #3c4a5e;
 		--gold: #a8875a;
 		--rule: #e3dccf;
-		display: grid;
-		grid-template-columns: 1fr 46%;
+		position: relative;
+		display: flex;
+		align-items: center;
 		min-height: 100vh;
 		min-height: 100svh;
-		background: var(--ivory);
+		padding: 3rem clamp(1rem, 6vw, 6rem);
+		box-sizing: border-box;
+		background: #0b1424;
 		color: var(--navy);
 	}
 	:global(body) {
-		background: #f7f4ee;
+		background: #0b1424;
 	}
 
-	/* ---------- Photo panel ---------- */
+	/* ---------- Full-background photo ---------- */
 	.visual {
-		position: relative;
-		order: 2;
+		position: fixed;
+		inset: 0;
 		margin: 0;
 		overflow: hidden;
-		background: #0b1424;
 	}
 	.visual img {
 		position: absolute;
@@ -141,14 +143,14 @@ const personJsonLd = JSON.stringify({
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
-		object-position: 70% 50%;
+		object-position: 60% 50%;
 		border-radius: 0;
 	}
 	.visual::after {
 		content: '';
 		position: absolute;
 		inset: 0;
-		background: linear-gradient(to right, rgba(11, 20, 36, 0.25), rgba(11, 20, 36, 0) 40%);
+		background: linear-gradient(to right, rgba(11, 20, 36, 0.55), rgba(11, 20, 36, 0.1) 60%);
 	}
 	.visual figcaption {
 		position: absolute;
@@ -158,16 +160,19 @@ const personJsonLd = JSON.stringify({
 		color: rgba(255, 255, 255, 0.7);
 	}
 
-	/* ---------- Content ---------- */
+	/* ---------- Ivory card ---------- */
 	.content {
-		order: 1;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		width: auto;
-		max-width: none;
+		position: relative;
+		z-index: 1;
+		width: 100%;
+		max-width: 36rem;
 		margin: 0;
-		padding: 4rem clamp(1.5rem, 6vw, 6rem) 2rem;
+		padding: 2.2rem clamp(1.5rem, 4vw, 3.2rem) 1.6rem;
+		box-sizing: border-box;
+		background: rgba(247, 244, 238, 0.97);
+		border-top: 3px solid var(--gold);
+		border-radius: 2px;
+		box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45);
 	}
 	.inner {
 		max-width: 33rem;
@@ -176,7 +181,7 @@ const personJsonLd = JSON.stringify({
 		display: block;
 		width: 104px;
 		height: 104px;
-		margin-bottom: 1.8rem;
+		margin-bottom: 1.3rem;
 		border-radius: 50%;
 		object-fit: cover;
 		border: 3px solid #fff;
@@ -212,7 +217,7 @@ const personJsonLd = JSON.stringify({
 		display: inline-flex;
 		align-items: center;
 		gap: 0.55em;
-		margin: 0 0 2rem;
+		margin: 0 0 1.5rem;
 		font-size: 0.8rem;
 		color: var(--navy-soft);
 	}
@@ -226,14 +231,14 @@ const personJsonLd = JSON.stringify({
 
 	/* At-a-glance facts with fine rules */
 	.facts {
-		margin: 0 0 2.2rem;
+		margin: 0 0 1.7rem;
 		border-top: 1px solid var(--rule);
 	}
 	.fact {
 		display: grid;
 		grid-template-columns: 8.5rem 1fr;
 		gap: 1rem;
-		padding: 0.95rem 0;
+		padding: 0.75rem 0;
 		border-bottom: 1px solid var(--rule);
 	}
 	.fact dt {
@@ -312,7 +317,7 @@ const personJsonLd = JSON.stringify({
 		border-bottom-color: var(--gold);
 	}
 	.foot {
-		margin-top: 3rem;
+		margin-top: 1.4rem;
 		font-size: 0.72rem;
 		letter-spacing: 0.04em;
 		color: #8a8f99;
@@ -321,15 +326,21 @@ const personJsonLd = JSON.stringify({
 	/* ---------- Phones and tablets ---------- */
 	@media (max-width: 900px) {
 		.page {
-			grid-template-columns: 1fr;
-			grid-template-rows: auto 1fr;
+			align-items: flex-start;
+			padding: 175px 0.9rem 1.2rem;
 		}
 		.visual {
-			order: 0;
-			height: 170px;
+			position: absolute;
+			inset: 0 0 auto 0;
+		}
+		.visual img {
+			position: static;
+			display: block;
+			width: 100%;
+			height: auto;
 		}
 		.visual::after {
-			background: linear-gradient(to bottom, rgba(11, 20, 36, 0) 40%, rgba(11, 20, 36, 0.35));
+			background: linear-gradient(to bottom, rgba(11, 20, 36, 0) 55%, #0b1424 100%);
 		}
 		.visual figcaption {
 			top: 0.5rem;
@@ -338,24 +349,23 @@ const personJsonLd = JSON.stringify({
 			font-size: 0.85em;
 		}
 		.content {
-			padding: 0 1.4rem 1.6rem;
-		}
-		.inner {
-			max-width: 34rem;
 			margin: 0 auto;
+			padding: 0 1.3rem 1.4rem;
 		}
 		.avatar {
 			width: 84px;
 			height: 84px;
-			margin: -42px 0 1.2rem;
-			position: relative;
-			z-index: 2;
+			margin: -42px 0 1.1rem;
+		}
+		.eyebrow {
+			font-size: 0.64rem;
+			letter-spacing: 0.13em;
 		}
 		.lede {
-			margin-bottom: 1.1rem;
+			margin-bottom: 1rem;
 		}
 		.status {
-			margin-bottom: 1.5rem;
+			margin-bottom: 1.4rem;
 		}
 		.fact {
 			grid-template-columns: 1fr;
@@ -367,7 +377,7 @@ const personJsonLd = JSON.stringify({
 			text-align: center;
 		}
 		.foot {
-			margin-top: 2rem;
+			margin-top: 1.6rem;
 		}
 	}
 </style>
