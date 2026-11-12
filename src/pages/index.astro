@@ -330,18 +330,11 @@ const personJsonLd = JSON.stringify({
 			align-items: flex-start;
 			padding: 175px 0.9rem 1.2rem;
 		}
-		.visual {
-			position: absolute;
-			inset: 0 0 auto 0;
-		}
 		.visual img {
-			position: static;
-			display: block;
-			width: 100%;
-			height: auto;
+			object-position: 72% 50%;
 		}
 		.visual::after {
-			background: linear-gradient(to bottom, rgba(11, 20, 36, 0) 55%, #0b1424 100%);
+			background: linear-gradient(to bottom, rgba(11, 20, 36, 0) 25%, rgba(11, 20, 36, 0.35));
 		}
 		.visual figcaption {
 			top: 0.5rem;
