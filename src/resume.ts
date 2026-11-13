@@ -91,7 +91,7 @@ export const EXPERIENCE: Role[] = [
 		highlights: [
 			'Supported six senior investment leaders at a fast-moving private equity firm, balancing competing priorities and sensitive matters.',
 			'Managed multi-time-zone calendars and all domestic and international travel, including visas and last-minute changes.',
-			'Independently ran the 10-person West Coast office across the Financial District and the Presidio, and led multi-currency expense and annual carbon-emissions reporting.',
+			'Independently managed the 10-person West Coast office across the Financial District and the Presidio, and led multi-currency expense and annual carbon-emissions reporting.',
 		],
 		strengths: ['Complex Calendaring', 'International Travel', 'Office Operations', 'Confidentiality'],
 	},
