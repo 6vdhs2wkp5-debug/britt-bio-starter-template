@@ -50,7 +50,7 @@ export const STRENGTHS = [
 	},
 	{
 		title: 'Office operations',
-		body: 'Office moves, vendors, IT, guests, catering and invoicing, managed so the office simply runs.',
+		body: 'Ran CVC Advisors’ 10-person West Coast office: moves, vendors, IT, guests, catering and invoicing.',
 	},
 	{
 		title: 'Expenses and reporting',
@@ -68,6 +68,7 @@ export interface Role {
 	dates: string;
 	highlights: string[];
 	strengths: string[];
+	featured?: string;
 }
 
 export const EXPERIENCE: Role[] = [
@@ -86,6 +87,7 @@ export const EXPERIENCE: Role[] = [
 		title: 'Executive Assistant | Office Manager',
 		company: 'CVC Advisors',
 		dates: 'Sep 2021 – Mar 2026',
+		featured: 'Longest role · 4.5 years',
 		highlights: [
 			'Supported six senior investment leaders at a fast-moving private equity firm, balancing competing priorities and sensitive matters.',
 			'Managed multi-time-zone calendars and all domestic and international travel, including visas and last-minute changes.',
