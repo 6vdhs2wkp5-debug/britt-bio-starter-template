@@ -50,7 +50,7 @@ export const STRENGTHS = [
 	},
 	{
 		title: 'Office operations',
-		body: 'Ran CVC Advisors’ 10-person West Coast office: moves, vendors, IT, guests, catering and invoicing.',
+		body: 'Managed CVC Advisors’ 10-person West Coast office: moves, vendors, IT, guests, catering and invoicing.',
 	},
 	{
 		title: 'Expenses and reporting',
