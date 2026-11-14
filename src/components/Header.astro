@@ -45,7 +45,7 @@ import { PROFILE } from '../resume';
 		color: rgb(var(--black));
 		font-family: var(--serif);
 		font-weight: 500;
-		font-size: 1.05em;
+		font-size: 1.25em;
 		text-decoration: none;
 	}
 	.brand img {
@@ -59,8 +59,8 @@ import { PROFILE } from '../resume';
 	nav .internal-links a.resume-btn {
 		margin-left: 0.8em;
 		padding: 0.7em 1.4em;
-		font-size: 0.68em;
-		letter-spacing: 0.18em;
+		font-size: var(--caps-size);
+		letter-spacing: var(--caps-track);
 		text-transform: uppercase;
 		border: 0;
 		border-radius: 2px;
@@ -73,11 +73,14 @@ import { PROFILE } from '../resume';
 		color: #fff;
 	}
 	nav .internal-links a {
-		padding: 1em 0.6em;
+		padding: 1.5em 0.9em;
 		color: rgb(var(--gray-dark));
-		border-bottom: 3px solid transparent;
+		border-bottom: 2px solid transparent;
 		text-decoration: none;
-		font-size: 0.9em;
+		font-size: var(--caps-size);
+		font-weight: 500;
+		letter-spacing: var(--caps-track);
+		text-transform: uppercase;
 	}
 	nav .internal-links a:hover {
 		color: var(--accent);
