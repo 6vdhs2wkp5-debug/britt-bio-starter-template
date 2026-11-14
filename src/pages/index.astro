@@ -211,15 +211,6 @@ const personJsonLd = JSON.stringify({
 					<p class="edu-line">{EDUCATION.degree} &nbsp;·&nbsp; {EDUCATION.dates}</p>
 					<p class="edu-note">{EDUCATION.note}</p>
 				</div>
-				<div class="edu-card">
-					<p class="kicker">Career start</p>
-					<h2>Lead Flight Attendant, Virgin America</h2>
-					<p class="edu-line">
-						Led conflict resolution and safety at 35,000 feet, building a calm, steady approach to
-						last-minute changes that has carried into every role since.
-					</p>
-					<a class="text-link" href="/about">Read the full story →</a>
-				</div>
 			</section>
 
 			<!-- ============ Contact ============ -->
@@ -774,7 +765,7 @@ const personJsonLd = JSON.stringify({
 	/* ---------- Education ---------- */
 	.edu {
 		display: grid;
-		grid-template-columns: repeat(2, 1fr);
+		grid-template-columns: 1fr;
 		gap: 1.2em;
 	}
 	.edu-card {
@@ -827,7 +818,7 @@ const personJsonLd = JSON.stringify({
 	.contact-text {
 		position: relative;
 		padding: 3em 2.4em 3.4em;
-		max-width: 36em;
+		max-width: 48em;
 	}
 	.contact h2 {
 		color: #fff;
@@ -888,8 +879,7 @@ const personJsonLd = JSON.stringify({
 		.stat-value {
 			white-space: normal;
 		}
-		.strengths,
-		.edu {
+		.strengths {
 			grid-template-columns: 1fr;
 		}
 		.role {
