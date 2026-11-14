@@ -28,8 +28,8 @@ export const BOOK_CALL = {
 };
 
 export const STATS = [
-	{ value: '8 years', label: 'of executive support and office management' },
 	{ value: 'People first', label: 'caring about executives’ wellbeing, families and lives' },
+	{ value: '8 years', label: 'of executive support and office management' },
 	{ value: 'Custom AI', label: 'workflows designed and built for each partner' },
 	{ value: 'Any size', label: 'thriving in small offices and global firms alike' },
 ];
