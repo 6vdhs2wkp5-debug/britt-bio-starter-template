@@ -130,21 +130,24 @@ const personJsonLd = JSON.stringify({
 				<ol class="timeline">
 					{
 						EXPERIENCE.map((role) => (
-							<li class:list={["role", { "is-featured": role.featured }]}>
-								<div class="role-meta">
-									<span class="dates">{role.dates}</span>
-									{role.featured && <span class="featured">{role.featured}</span>}
-								</div>
-								<div class="role-body">
-									<h3>
-										{role.title} <span class="at">at</span> <span class="company">{role.company}</span>
-									</h3>
+							<li class="role">
+								<details>
+									<summary>
+										<span class="role-meta">
+											<span class="dates">{role.dates}</span>
+											{role.featured && <span class="featured">{role.featured}</span>}
+										</span>
+										<h3>
+											{role.title} <span class="at">at</span> <span class="company">{role.company}</span>
+										</h3>
+										<span class="chev" aria-hidden="true"></span>
+									</summary>
 									<ul>
 										{role.highlights.map((h) => (
 											<li set:html={hl(h)} />
 										))}
 									</ul>
-								</div>
+								</details>
 							</li>
 						))
 					}
@@ -586,11 +589,6 @@ const personJsonLd = JSON.stringify({
 		letter-spacing: 0.14em;
 		text-transform: uppercase;
 	}
-	.role.is-featured .role-meta {
-		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
-	}
 	.contact .people {
 		margin-bottom: 0.8em;
 		font-family: var(--serif);
@@ -600,11 +598,56 @@ const personJsonLd = JSON.stringify({
 		color: #fff;
 	}
 	.role {
-		display: grid;
-		grid-template-columns: 11em 1fr;
-		gap: 1.5em;
-		padding: 1.6em 0;
 		border-top: 1px solid rgb(var(--gray-light));
+	}
+	.role summary {
+		display: grid;
+		grid-template-columns: 11em 1fr auto;
+		align-items: baseline;
+		gap: 1.5em;
+		padding: 1.4em 0;
+		cursor: pointer;
+		list-style: none;
+	}
+	.role summary::-webkit-details-marker {
+		display: none;
+	}
+	.role summary:focus-visible {
+		outline: 2px solid var(--gold);
+		outline-offset: 4px;
+	}
+	.role-meta {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+	}
+	.role summary:hover .company {
+		color: var(--accent);
+	}
+	/* the arrow: points down when closed, up when open */
+	.chev {
+		align-self: center;
+		width: 0.6em;
+		height: 0.6em;
+		margin-right: 0.3em;
+		border-right: 1.5px solid var(--accent);
+		border-bottom: 1.5px solid var(--accent);
+		transform: translateY(-25%) rotate(45deg);
+		transition: transform 0.25s ease;
+	}
+	.role details[open] .chev {
+		transform: translateY(15%) rotate(-135deg);
+	}
+	.role details > ul {
+		margin: -0.6em 0 0 calc(11em + 1.5em);
+		padding-bottom: 1.4em;
+		animation: reveal 0.25s ease-out;
+	}
+	@keyframes reveal {
+		from {
+			opacity: 0;
+			transform: translateY(-4px);
+		}
 	}
 	.dates {
 		display: inline-block;
@@ -613,7 +656,7 @@ const personJsonLd = JSON.stringify({
 		color: rgb(var(--gray));
 	}
 	.role h3 {
-		margin: 0 0 0.5em;
+		margin: 0;
 		font-size: 1.2em;
 	}
 	.at {
@@ -876,9 +919,16 @@ const personJsonLd = JSON.stringify({
 		.strengths {
 			grid-template-columns: 1fr;
 		}
-		.role {
-			grid-template-columns: 1fr;
-			gap: 0.3em;
+		.role summary {
+			grid-template-columns: 1fr auto;
+			gap: 0.3em 1em;
+		}
+		.role-meta {
+			grid-column: 1 / -1;
+		}
+		.role details > ul {
+			margin-left: 0;
+			margin-top: 0;
 		}
 		.ai-inner {
 			grid-template-columns: 1fr;
