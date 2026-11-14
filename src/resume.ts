@@ -28,10 +28,10 @@ export const BOOK_CALL = {
 };
 
 export const STATS = [
-	{ value: 'People first', label: 'caring about executives and their families' },
+	{ value: 'People first', label: 'caring about executives' },
 	{ value: '8 years', label: 'of executive support' },
-	{ value: 'Custom AI', label: 'workflows built for each partner' },
-	{ value: 'Any size', label: 'from small offices to global firms' },
+	{ value: 'Custom workflows', label: 'built for each partner' },
+	{ value: 'Any size', label: 'small offices to global firms' },
 ];
 
 export const STRENGTHS = [
