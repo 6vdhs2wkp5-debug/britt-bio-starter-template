@@ -37,20 +37,6 @@ export const PHOTOS = {
 		...CC_BY_SA_4,
 		changes: 'resized',
 	},
-	aerial: {
-		src: '/photos/bay-aerial-1920.webp',
-		srcSmall: '/photos/bay-aerial-960.webp',
-		width: 1920,
-		height: 1187,
-		alt: 'Aerial view of downtown San Francisco, the Bay Bridge, Treasure Island and Oakland',
-		caption: 'Downtown, the Bay Bridge and the East Bay from above',
-		author: 'Dllu',
-		authorUrl: 'https://commons.wikimedia.org/wiki/User:Dllu',
-		sourceUrl:
-			'https://commons.wikimedia.org/wiki/File:Aerial_view_of_downtown_San_Francisco,_the_Bay_Bridge,_Treasure_Island,_and_Oakland.jpg',
-		...CC_BY_SA_4,
-		changes: 'resized',
-	},
 	skyline: {
 		src: '/photos/bay-skyline-1920.webp',
 		srcSmall: '/photos/bay-skyline-960.webp',
