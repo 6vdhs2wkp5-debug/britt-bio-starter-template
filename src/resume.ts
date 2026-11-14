@@ -13,7 +13,6 @@ export const PROFILE = {
 	bookingUrl: 'https://cal.com/brittanyhelm/intro-call',
 	headshot: '/photos/headshot-square-640.webp',
 	headshotSmall: '/photos/headshot-square-320.webp',
-	portrait: '/photos/headshot-portrait-720.webp',
 	summary:
 		'Executive Assistant with 8 years of experience supporting partners and senior investment leaders most recently at private equity firms in San Francisco. Skilled in complex calendar management, international travel, investor relations and office operations, with a reputation for sound judgment, discretion and anticipating executive needs.',
 };

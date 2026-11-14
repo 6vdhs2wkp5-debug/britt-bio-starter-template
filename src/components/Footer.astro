@@ -1,18 +1,11 @@
 ---
 import { SITE_TITLE } from '../consts';
-import { PROFILE, BOOK_CALL } from '../resume';
 const today = new Date();
 ---
 
 <footer>
 	<div class="inner">
 		<p class="made">Based in San Francisco, California</p>
-		<p class="links">
-			<a href={BOOK_CALL.href} target={BOOK_CALL.external ? '_blank' : undefined} rel={BOOK_CALL.external ? 'noopener' : undefined}>Book a call</a>
-			<a href={`mailto:${PROFILE.email}`}>Email</a>
-			<a href={PROFILE.linkedin} target="_blank" rel="noopener">LinkedIn</a>
-			<a href={PROFILE.resume} target="_blank" rel="noopener">Resume</a>
-		</p>
 		<p class="copy">&copy; {today.getFullYear()} {SITE_TITLE}</p>
 	</div>
 </footer>

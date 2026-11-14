@@ -1,6 +1,5 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import PhotoCredit from '../components/PhotoCredit.astro';
 import { SITE_DESCRIPTION } from '../consts';
@@ -51,7 +50,6 @@ const personJsonLd = JSON.stringify({
 		<script type="application/ld+json" set:html={personJsonLd} />
 	</head>
 	<body>
-		<Header />
 
 		<!-- ============ Hero ============ -->
 		<section class="hero" aria-labelledby="hero-title">
@@ -168,7 +166,7 @@ const personJsonLd = JSON.stringify({
 					</p>
 					<div class="tools">
 						<span class="tool-label">Everyday tools</span>
-						<p class="tool-list">{[...TOOLS.AI, ...TOOLS.Systems].map((t, i, all) => <span>{t}{i < all.length - 1 && <span class="sep" aria-hidden="true"> · </span>}</span>)}</p>
+						<p class="tool-list">{[...TOOLS.AI, ...TOOLS.Systems].map((t, i, all) => (<><span>{t}{i < all.length - 1 && <span class="sep" aria-hidden="true">&nbsp;·</span>}</span>{' '}</>))}</p>
 					</div>
 				</div>
 				<div class="flows">
@@ -199,7 +197,6 @@ const personJsonLd = JSON.stringify({
 					<h2 id="edu-title">{EDUCATION.school}</h2>
 					<p class="edu-line">{EDUCATION.degree} &nbsp;·&nbsp; {EDUCATION.dates}</p>
 					<p class="edu-note">{EDUCATION.note}</p>
-					<a class="text-link" href="/about">Read the full story <span aria-hidden="true">→</span></a>
 				</div>
 			</section>
 
@@ -693,7 +690,6 @@ const personJsonLd = JSON.stringify({
 		white-space: nowrap;
 	}
 	.tool-list .sep {
-		white-space: normal;
 		color: var(--gold);
 	}
 	.tool-list {
@@ -704,15 +700,18 @@ const personJsonLd = JSON.stringify({
 	}
 	.flows {
 		display: grid;
-		gap: 1.2em;
 		align-content: start;
+		background: #fff;
+		border: 1px solid rgb(var(--gray-light));
+		border-radius: 2px;
+	}
+	.flow + .flow {
+		border-top: 1px solid rgb(var(--gray-light)) !important;
 	}
 	.flow {
 		position: relative;
 		padding: 1.4em 1.5em 1.3em;
-		border-radius: 2px;
-		background: #fff;
-		border: 1px solid rgb(var(--gray-light));
+		border: 0;
 	}
 	.flow-head {
 		display: flex;
