@@ -49,7 +49,7 @@ export const STRENGTHS = [
 	},
 	{
 		title: 'Office operations',
-		body: 'Managed CVC Advisors’ **10-person West Coast office**, from vendors to expenses.',
+		body: 'Managed CVC Advisors’ **West Coast** operations, from vendors to expenses.',
 	},
 	{
 		title: 'Processes & systems',
@@ -88,7 +88,7 @@ export const EXPERIENCE: Role[] = [
 		highlights: [
 			'Supported **six senior investment leaders** at a fast-moving private equity firm.',
 			'Managed complex calendars and **international travel**, including visas and last-minute changes.',
-			'**Independently managed the 10-person West Coast office** and multi-currency expense reporting.',
+			'**Independently managed West Coast operations** and multi-currency expense reporting.',
 		],
 	},
 	{
