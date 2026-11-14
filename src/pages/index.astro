@@ -109,10 +109,13 @@ const personJsonLd = JSON.stringify({
 				<div class="strengths">
 					{
 						STRENGTHS.map((s) => (
-							<article class="strength">
-								<h3>{s.title}</h3>
+							<details class="strength">
+								<summary>
+									<h3>{s.title}</h3>
+									<span class="chev" aria-hidden="true"></span>
+								</summary>
 								<p set:html={hl(s.body)} />
-							</article>
+							</details>
 						))
 					}
 				</div>
@@ -476,27 +479,46 @@ const personJsonLd = JSON.stringify({
 
 	/* ---------- Strengths ---------- */
 	.strengths {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		gap: 1.2em;
-	}
-	.strength {
-		padding: 1.5em 1.5em 1.6em;
+		padding: 0.4em 2em;
 		border-radius: 2px;
 		background: var(--panel-glass);
 		-webkit-backdrop-filter: blur(10px);
 		backdrop-filter: blur(10px);
-		border: 1px solid rgb(var(--gray-light));
+	}
+	.strength + .strength {
+		border-top: 1px solid rgb(var(--gray-light));
+	}
+	.strength summary {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1.5em;
+		padding: 1.15em 0;
+		cursor: pointer;
+		list-style: none;
+	}
+	.strength summary::-webkit-details-marker {
+		display: none;
+	}
+	.strength summary:focus-visible {
+		outline: 2px solid var(--gold);
+		outline-offset: 4px;
+	}
+	.strength summary:hover h3 {
+		color: var(--accent);
 	}
 	.strength h3 {
-		margin: 0 0 0.4em;
-		font-size: 1.35em;
+		margin: 0;
+		font-size: 1.2em;
+		transition: color 0.2s ease;
 	}
 	.strength p {
-		margin: 0;
-		font-size: 0.82em;
-		line-height: 1.55;
-		color: rgb(var(--gray));
+		margin: -0.4em 0 0;
+		padding-bottom: 1.2em;
+		max-width: 46em;
+		font-size: 0.86em;
+		line-height: 1.6;
+		animation: reveal 0.25s ease-out;
 	}
 
 	/* ---------- Experience ---------- */
@@ -543,7 +565,8 @@ const personJsonLd = JSON.stringify({
 		text-shadow: 0 1px 12px rgba(9, 16, 30, 0.7);
 	}
 	@media (max-width: 600px) {
-		.timeline {
+		.timeline,
+		.strengths {
 			padding: 0.2em 1.2em;
 		}
 	}
@@ -635,7 +658,7 @@ const personJsonLd = JSON.stringify({
 		transform: translateY(-25%) rotate(45deg);
 		transition: transform 0.25s ease;
 	}
-	.role details[open] .chev {
+	details[open] > summary .chev {
 		transform: translateY(15%) rotate(-135deg);
 	}
 	.role details > ul {
@@ -887,9 +910,6 @@ const personJsonLd = JSON.stringify({
 		.stat:nth-child(-n + 2) {
 			border-bottom: 1px solid rgb(var(--gray-light));
 		}
-		.strengths {
-			grid-template-columns: repeat(2, 1fr);
-		}
 	}
 	@media (max-width: 720px) {
 		.hero {
@@ -915,9 +935,6 @@ const personJsonLd = JSON.stringify({
 	@media (max-width: 480px) {
 		.stat-value {
 			white-space: normal;
-		}
-		.strengths {
-			grid-template-columns: 1fr;
 		}
 		.role summary {
 			grid-template-columns: 1fr auto;

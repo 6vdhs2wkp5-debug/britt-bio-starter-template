@@ -28,7 +28,7 @@ export const BOOK_CALL = {
 };
 
 export const STATS = [
-	{ value: 'People first', label: 'caring about executives' },
+	{ value: 'People first', label: 'every detail, every person' },
 	{ value: '8 years', label: 'of executive support' },
 	{ value: 'Custom workflows', label: 'built for each partner' },
 	{ value: 'Any size', label: 'small offices to global firms' },
