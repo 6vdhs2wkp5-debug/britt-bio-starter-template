@@ -12,6 +12,7 @@ import {
 	AI_WORKFLOWS,
 	TOOLS,
 	BOOK_CALL,
+	hl,
 	EDUCATION,
 } from '../resume';
 
@@ -111,7 +112,7 @@ const personJsonLd = JSON.stringify({
 							<article class="strength">
 								<span class="num">{String(i + 1).padStart(2, '0')}</span>
 								<h3>{s.title}</h3>
-								<p>{s.body}</p>
+								<p set:html={hl(s.body)} />
 							</article>
 						))
 					}
@@ -141,7 +142,7 @@ const personJsonLd = JSON.stringify({
 									</h3>
 									<ul>
 										{role.highlights.map((h) => (
-											<li>{h}</li>
+											<li set:html={hl(h)} />
 										))}
 									</ul>
 								</div>
@@ -159,9 +160,8 @@ const personJsonLd = JSON.stringify({
 					<p class="kicker">AI workflows</p>
 					<h2 id="ai-title">Built around each partner</h2>
 					<p>
-						Every partner works differently, so one-size-fits-all tools fall short. Each workflow is
-						designed, built and given clear guidelines around one executive, so routine work runs
-						reliably and more time goes to people and judgment calls.
+						Every partner works differently. Each workflow is built around one executive, so
+						<strong>routine work runs smoothly</strong> and more time goes to people and judgment calls.
 					</p>
 					<div class="tools">
 						<span class="tool-label">Everyday tools</span>
@@ -178,7 +178,7 @@ const personJsonLd = JSON.stringify({
 								</header>
 								<ul class="steps">
 									{w.points.map((d) => (
-										<li>{d}</li>
+										<li set:html={hl(d)} />
 									))}
 								</ul>
 							</article>
@@ -338,7 +338,7 @@ const personJsonLd = JSON.stringify({
 	/* The Bay Bridge photo stays still behind the whole page while content scrolls over it. */
 	:global(html) {
 		background: #0b1424;
-		--panel-glass: rgba(255, 255, 255, 0.8);
+		--panel-glass: rgba(255, 255, 255, 0.68);
 	}
 	:global(body) {
 		background: transparent;
@@ -567,6 +567,12 @@ const personJsonLd = JSON.stringify({
 	}
 	.section-head .see-all {
 		color: var(--champagne);
+	}
+	.block > .kicker,
+	.block > h2,
+	.section-head,
+	.ai-intro {
+		text-shadow: 0 1px 12px rgba(9, 16, 30, 0.7);
 	}
 	@media (max-width: 600px) {
 		.timeline {
@@ -832,6 +838,25 @@ const personJsonLd = JSON.stringify({
 	.contact p {
 		margin: 0 0 1.4em;
 		color: rgba(255, 255, 255, 0.9);
+	}
+
+	/* ---------- Highlights ---------- */
+	.strength :global(strong),
+	.role :global(strong),
+	.steps :global(strong) {
+		font-weight: 600;
+		color: var(--ink);
+	}
+	.ai-intro strong {
+		font-weight: 500;
+		color: var(--champagne);
+	}
+	/* darker body text so it stays crisp on the see-through boxes */
+	.strength p,
+	.stat-label,
+	.steps li,
+	.dates {
+		color: rgb(var(--gray-dark));
 	}
 
 	/* ---------- Responsive ---------- */

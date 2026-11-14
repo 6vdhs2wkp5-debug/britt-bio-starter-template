@@ -28,36 +28,36 @@ export const BOOK_CALL = {
 };
 
 export const STATS = [
-	{ value: 'People first', label: 'caring about executives’ wellbeing, families and lives' },
-	{ value: '8 years', label: 'of executive support and office management' },
-	{ value: 'Custom AI', label: 'workflows designed and built for each partner' },
-	{ value: 'Any size', label: 'thriving in small offices and global firms alike' },
+	{ value: 'People first', label: 'caring about executives and their families' },
+	{ value: '8 years', label: 'of executive support' },
+	{ value: 'Custom AI', label: 'workflows built for each partner' },
+	{ value: 'Any size', label: 'from small offices to global firms' },
 ];
 
 export const STRENGTHS = [
 	{
 		title: 'Calendar management',
-		body: 'Busy, multi-time-zone calendars for partners and deal teams, with conflicts and prep gaps caught before they become problems.',
+		body: 'Multi-time-zone calendars for partners and deal teams, with **conflicts caught early**.',
 	},
 	{
 		title: 'Travel and events',
-		body: 'Investor meetings, advisory boards, offsites and group travel, managed from first booking through the day itself.',
+		body: '**Investor meetings**, advisory boards, offsites and travel, from first booking to the day itself.',
 	},
 	{
 		title: 'Trusted relationships',
-		body: 'The first call for portfolio CEOs, LPs and board members, who know every request will be handled.',
+		body: 'A **go-to contact** for portfolio CEOs, LPs and board members.',
 	},
 	{
 		title: 'Office operations',
-		body: 'Managed CVC Advisors’ 10-person West Coast office, from vendors, IT and guests to multi-currency expense reporting.',
+		body: 'Managed CVC Advisors’ **10-person West Coast office**, from vendors to expenses.',
 	},
 	{
 		title: 'Processes & systems',
-		body: 'Created and implemented processes and systems across firms, from expense reporting and onboarding to firm-wide calendars.',
+		body: 'Created and implemented **processes and systems** across firms, from onboarding to expenses.',
 	},
 	{
 		title: 'Discretion',
-		body: 'Sensitive deals, personal logistics and family plans, all handled with complete confidentiality.',
+		body: 'Sensitive deals and family plans, handled with **complete confidentiality**.',
 	},
 ];
 
@@ -76,9 +76,9 @@ export const EXPERIENCE: Role[] = [
 		company: 'Centana Growth Partners',
 		dates: 'Mar 2026 – Oct 2026',
 		highlights: [
-			'Supported a founding partner, a partner and their deal teams, and ran the firm-wide calendar. Served as a go-to contact for portfolio CEOs, LPs and advisory board members.',
-			'Planned the annual investor meeting, two advisory board meetings, three partner offsites and two company offsites, from vendors and budgets to running the day.',
-			'Designed and built AI workflows tailored to each partner, from calendar reviews to expense reconciliation.',
+			'Supported a **founding partner, a partner and their deal teams**, and ran the firm-wide calendar.',
+			'Planned the **annual investor meeting**, two advisory board meetings and five offsites.',
+			'Built **custom AI workflows** for each partner.',
 		],
 		strengths: ['Event Planning', 'Calendar Management', 'Stakeholder Engagement', 'AI Workflow Design'],
 	},
@@ -88,9 +88,9 @@ export const EXPERIENCE: Role[] = [
 		dates: 'Sep 2021 – Mar 2026',
 		featured: 'Longest role · 4.5 years',
 		highlights: [
-			'Supported six senior investment leaders at a fast-moving private equity firm, balancing competing priorities and sensitive matters.',
-			'Managed multi-time-zone calendars and all domestic and international travel, including visas and last-minute changes.',
-			'Independently managed the 10-person West Coast office across the Financial District and the Presidio, and led multi-currency expense and annual carbon-emissions reporting.',
+			'Supported **six senior investment leaders** at a fast-moving private equity firm.',
+			'Managed complex calendars and **international travel**, including visas and last-minute changes.',
+			'**Independently managed the 10-person West Coast office** and multi-currency expense reporting.',
 		],
 		strengths: ['Complex Calendaring', 'International Travel', 'Office Operations', 'Confidentiality'],
 	},
@@ -99,9 +99,9 @@ export const EXPERIENCE: Role[] = [
 		company: 'Owl Ventures',
 		dates: 'Sep 2018 – Jan 2021',
 		highlights: [
-			'Supported a three-person team through a $1B+ fundraise from LPs.',
-			'Ran Diversity & Inclusion reporting across portfolio CEOs and co-led the Education & Outcomes Report for LPs.',
-			'Onboarded two new employees remotely and led company-wide expense reporting.',
+			'Supported a three-person team through a **$1B+ fundraise**.',
+			'Co-led the **Education & Outcomes Report** for LPs and ran Diversity & Inclusion reporting.',
+			'Onboarded new hires remotely and led company-wide expense reporting.',
 		],
 		strengths: ['Investor Relations', 'Data Analysis', 'Report Writing', 'Onboarding'],
 	},
@@ -110,8 +110,8 @@ export const EXPERIENCE: Role[] = [
 		company: 'ClinCapture',
 		dates: 'Jan 2018 – Sep 2018',
 		highlights: [
-			'Managed the CEO’s inbox and oversaw customer support tickets alongside the CTO.',
-			'Coordinated conference and event logistics; supported hiring across all departments.',
+			'Managed the **CEO’s inbox** and oversaw customer support with the CTO.',
+			'Coordinated **conferences and events** and supported hiring.',
 		],
 		strengths: ['Inbox Management', 'Recruiting', 'Conference Logistics'],
 	},
@@ -120,7 +120,7 @@ export const EXPERIENCE: Role[] = [
 		company: 'Virgin America',
 		dates: 'Jul 2017 – Jan 2018',
 		highlights: [
-			'Flew 300+ hours as Conflict Resolution Manager and Safety & Compliance Coordinator.',
+			'Flew **300+ hours** leading conflict resolution and safety.',
 		],
 		strengths: ['Conflict Resolution', 'Safety & Compliance', 'Leadership'],
 	},
@@ -138,24 +138,24 @@ export const AI_WORKFLOWS: Workflow[] = [
 		step: '01',
 		title: 'Design',
 		points: [
-			'Mapping each partner’s priorities, preferences and pain points',
-			'Identifying the routine tasks best suited to AI',
+			'Mapping each partner’s **priorities and pain points**',
+			'Spotting routine tasks suited to AI',
 		],
 	},
 	{
 		step: '02',
 		title: 'Build',
 		points: [
-			'Constructing workflows in Claude, ChatGPT and Copilot',
-			'Covering calendar reviews, expense reconciliation, meeting prep and more',
+			'Workflows in **Claude, ChatGPT and Copilot**',
+			'Calendar reviews, expenses, meeting prep and more',
 		],
 	},
 	{
 		step: '03',
 		title: 'Set guidelines',
 		points: [
-			'Writing clear rules so every workflow runs consistently',
-			'Reviewing results and refining as needs change',
+			'Clear rules so every workflow **runs consistently**',
+			'Refining as needs change',
 		],
 	},
 ];
@@ -184,3 +184,12 @@ export const EDUCATION = {
 	note: 'D1 Cheerleading Captain',
 	dates: '2013 – 2017',
 };
+
+// Turns **phrase** into a highlighted <strong>phrase</strong> for the page.
+export function hl(text: string): string {
+	return text
+		.replace(/&/g, '&amp;')
+		.replace(/</g, '&lt;')
+		.replace(/>/g, '&gt;')
+		.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+}
