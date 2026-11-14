@@ -66,7 +66,6 @@ export interface Role {
 	company: string;
 	dates: string;
 	highlights: string[];
-	strengths: string[];
 	featured?: string;
 }
 
@@ -80,7 +79,6 @@ export const EXPERIENCE: Role[] = [
 			'Planned the **annual investor meeting**, two advisory board meetings and five offsites.',
 			'Built **custom AI workflows** for each partner.',
 		],
-		strengths: ['Event Planning', 'Calendar Management', 'Stakeholder Engagement', 'AI Workflow Design'],
 	},
 	{
 		title: 'Executive Assistant | Office Manager',
@@ -92,7 +90,6 @@ export const EXPERIENCE: Role[] = [
 			'Managed complex calendars and **international travel**, including visas and last-minute changes.',
 			'**Independently managed the 10-person West Coast office** and multi-currency expense reporting.',
 		],
-		strengths: ['Complex Calendaring', 'International Travel', 'Office Operations', 'Confidentiality'],
 	},
 	{
 		title: 'Executive Assistant | Office Manager',
@@ -103,7 +100,6 @@ export const EXPERIENCE: Role[] = [
 			'Co-led the **Education & Outcomes Report** for LPs and ran Diversity & Inclusion reporting.',
 			'Onboarded new hires remotely and led company-wide expense reporting.',
 		],
-		strengths: ['Investor Relations', 'Data Analysis', 'Report Writing', 'Onboarding'],
 	},
 	{
 		title: 'Executive Assistant',
@@ -113,7 +109,6 @@ export const EXPERIENCE: Role[] = [
 			'Managed the **CEO’s inbox** and oversaw customer support with the CTO.',
 			'Coordinated **conferences and events** and supported hiring.',
 		],
-		strengths: ['Inbox Management', 'Recruiting', 'Conference Logistics'],
 	},
 	{
 		title: 'Lead Flight Attendant',
@@ -122,7 +117,6 @@ export const EXPERIENCE: Role[] = [
 		highlights: [
 			'Flew **300+ hours** leading conflict resolution and safety.',
 		],
-		strengths: ['Conflict Resolution', 'Safety & Compliance', 'Leadership'],
 	},
 ];
 

@@ -84,7 +84,7 @@ const personJsonLd = JSON.stringify({
 					<a class="button ghost" href={BOOK_CALL.href} target={BOOK_CALL.external ? '_blank' : undefined} rel={BOOK_CALL.external ? 'noopener' : undefined}>Book a call</a>
 					<a class="button ghost" href={PROFILE.linkedin} target="_blank" rel="noopener">LinkedIn</a>
 				</div>
-				<p class="status"><span class="dot" aria-hidden="true"></span>San Francisco · Open to new opportunities</p>
+				<p class="status"><span class="dot" aria-hidden="true"></span>Open to new opportunities</p>
 			</div>
 			<PhotoCredit photo={hero} class="hero-credit" />
 		</section>
@@ -108,9 +108,8 @@ const personJsonLd = JSON.stringify({
 				<h2 id="strengths-title">Handling the details, so partners don’t have to</h2>
 				<div class="strengths">
 					{
-						STRENGTHS.map((s, i) => (
+						STRENGTHS.map((s) => (
 							<article class="strength">
-								<span class="num">{String(i + 1).padStart(2, '0')}</span>
 								<h3>{s.title}</h3>
 								<p set:html={hl(s.body)} />
 							</article>
@@ -192,10 +191,14 @@ const personJsonLd = JSON.stringify({
 			<!-- ============ Education + background ============ -->
 			<section class="block edu" aria-labelledby="edu-title">
 				<div class="edu-card">
-					<p class="kicker">Education</p>
-					<h2 id="edu-title">{EDUCATION.school}</h2>
-					<p class="edu-line">{EDUCATION.degree} &nbsp;·&nbsp; {EDUCATION.dates}</p>
-					<p class="edu-note">{EDUCATION.note}</p>
+					<div>
+						<p class="kicker">Education</p>
+						<h2 id="edu-title">{EDUCATION.school}</h2>
+					</div>
+					<div class="edu-detail">
+						<p class="edu-line">{EDUCATION.degree} &nbsp;·&nbsp; {EDUCATION.dates}</p>
+						<p class="edu-note">{EDUCATION.note}</p>
+					</div>
 				</div>
 			</section>
 
@@ -209,7 +212,6 @@ const personJsonLd = JSON.stringify({
 						<a class="button primary" href={BOOK_CALL.href} target={BOOK_CALL.external ? '_blank' : undefined} rel={BOOK_CALL.external ? 'noopener' : undefined}>Book a call</a>
 						<a class="button ghost" href={`mailto:${PROFILE.email}`}>Email</a>
 						<a class="button ghost" href={PROFILE.linkedin} target="_blank" rel="noopener">LinkedIn</a>
-						<a class="button ghost" href={PROFILE.resume} target="_blank" rel="noopener">Resume</a>
 					</div>
 				</div>
 			</section>
@@ -247,34 +249,9 @@ const personJsonLd = JSON.stringify({
 	.ai-intro h2 {
 		color: #fff;
 	}
-	.kicker.light {
-		color: var(--sunset);
-	}
 	h2 {
 		font-size: clamp(1.6rem, 3.6vw, 2.3rem);
 		margin-bottom: 0.9em;
-	}
-	.chips {
-		display: flex;
-		flex-wrap: wrap;
-		align-items: center;
-		gap: 0.4em;
-		margin: 0;
-	}
-	.chip {
-		white-space: nowrap;
-		line-height: 1.6;
-		padding: 0.15em 0.7em;
-		border-radius: 2px;
-		background: rgb(var(--gray-light));
-		font-size: 0.7em;
-		font-weight: 500;
-		color: rgb(var(--gray-dark));
-	}
-	.chip.dark {
-		background: rgba(255, 255, 255, 0.1);
-		color: #fff;
-		border: 1px solid rgba(255, 255, 255, 0.2);
 	}
 	.button {
 		display: inline-block;
@@ -507,18 +484,6 @@ const personJsonLd = JSON.stringify({
 		-webkit-backdrop-filter: blur(10px);
 		backdrop-filter: blur(10px);
 		border: 1px solid rgb(var(--gray-light));
-		transition: border-color 0.2s ease;
-	}
-	.strength:hover {
-		border-color: var(--gold);
-	}
-	.num {
-		display: block;
-		margin-bottom: 0.6em;
-		font-size: 0.7em;
-		font-weight: 500;
-		letter-spacing: 0.14em;
-		color: var(--gold);
 	}
 	.strength h3 {
 		margin: 0 0 0.4em;
@@ -787,6 +752,23 @@ const personJsonLd = JSON.stringify({
 		backdrop-filter: blur(10px);
 		border: 1px solid rgb(var(--gray-light));
 	}
+	.edu-card {
+		display: grid;
+		grid-template-columns: 1fr auto;
+		align-items: end;
+		gap: 0.6em 2em;
+	}
+	.edu-detail {
+		text-align: right;
+	}
+	@media (max-width: 600px) {
+		.edu-card {
+			grid-template-columns: 1fr;
+		}
+		.edu-detail {
+			text-align: left;
+		}
+	}
 	.edu-card h2 {
 		font-size: 1.35em;
 		margin-bottom: 0.35em;
@@ -800,18 +782,6 @@ const personJsonLd = JSON.stringify({
 		font-size: 0.85em;
 		font-weight: 500;
 		color: var(--accent-dark);
-	}
-	.text-link {
-		display: inline-block;
-		margin-top: 1em;
-		font-size: var(--caps-size);
-		font-weight: 500;
-		letter-spacing: var(--caps-track);
-		text-transform: uppercase;
-		text-decoration: none;
-		color: var(--accent);
-		border-bottom: 1px solid var(--gold);
-		padding-bottom: 2px;
 	}
 
 	/* ---------- Contact ---------- */
