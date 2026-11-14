@@ -121,7 +121,7 @@ export const EXPERIENCE: Role[] = [
 		company: 'Virgin America',
 		dates: 'Jul 2017 – Jan 2018',
 		highlights: [
-			'Flew 300+ hours as Conflict Resolution Manager and Safety & Compliance Coordinator, after being selected for a program with under 1% acceptance.',
+			'Flew 300+ hours as Conflict Resolution Manager and Safety & Compliance Coordinator.',
 		],
 		strengths: ['Conflict Resolution', 'Safety & Compliance', 'Leadership'],
 	},
