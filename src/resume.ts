@@ -50,11 +50,11 @@ export const STRENGTHS = [
 	},
 	{
 		title: 'Office operations',
-		body: 'Managed CVC Advisors’ 10-person West Coast office: moves, vendors, IT, guests, catering and invoicing.',
+		body: 'Managed CVC Advisors’ 10-person West Coast office, from vendors, IT and guests to multi-currency expense reporting.',
 	},
 	{
-		title: 'Expenses and reporting',
-		body: 'Multi-currency expense reports, reimbursements and LP-facing reports, accurate and on time.',
+		title: 'Processes & systems',
+		body: 'Created and implemented processes and systems across firms, from expense reporting and onboarding to firm-wide calendars.',
 	},
 	{
 		title: 'Discretion',
