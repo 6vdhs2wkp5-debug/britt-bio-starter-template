@@ -338,6 +338,7 @@ const personJsonLd = JSON.stringify({
 	/* The Bay Bridge photo stays still behind the whole page while content scrolls over it. */
 	:global(html) {
 		background: #0b1424;
+		--panel-glass: rgba(255, 255, 255, 0.9);
 	}
 	:global(body) {
 		background: transparent;
@@ -462,7 +463,9 @@ const personJsonLd = JSON.stringify({
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
 		margin-top: -3.2em;
-		background: #fff;
+		background: var(--panel-glass);
+		-webkit-backdrop-filter: blur(10px);
+		backdrop-filter: blur(10px);
 		border-radius: 2px;
 		box-shadow: 0 10px 30px -12px rgba(var(--black), 0.18);
 		overflow: hidden;
@@ -500,7 +503,9 @@ const personJsonLd = JSON.stringify({
 	.strength {
 		padding: 1.5em 1.5em 1.6em;
 		border-radius: 2px;
-		background: #fff;
+		background: var(--panel-glass);
+		-webkit-backdrop-filter: blur(10px);
+		backdrop-filter: blur(10px);
 		border: 1px solid rgb(var(--gray-light));
 		transition: border-color 0.2s ease;
 	}
@@ -552,7 +557,9 @@ const personJsonLd = JSON.stringify({
 		list-style: none;
 		margin: 0;
 		padding: 0.4em 2em;
-		background: #fff;
+		background: var(--panel-glass);
+		-webkit-backdrop-filter: blur(10px);
+		backdrop-filter: blur(10px);
 		border-radius: 2px;
 	}
 	.timeline > .role:first-child {
@@ -716,7 +723,9 @@ const personJsonLd = JSON.stringify({
 	.flows {
 		display: grid;
 		align-content: start;
-		background: #fff;
+		background: var(--panel-glass);
+		-webkit-backdrop-filter: blur(10px);
+		backdrop-filter: blur(10px);
 		border: 1px solid rgb(var(--gray-light));
 		border-radius: 2px;
 	}
@@ -767,7 +776,9 @@ const personJsonLd = JSON.stringify({
 	.edu-card {
 		padding: 1.6em 1.6em 1.7em;
 		border-radius: 2px;
-		background: #fff;
+		background: var(--panel-glass);
+		-webkit-backdrop-filter: blur(10px);
+		backdrop-filter: blur(10px);
 		border: 1px solid rgb(var(--gray-light));
 	}
 	.edu-card h2 {
