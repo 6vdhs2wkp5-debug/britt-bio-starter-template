@@ -7,10 +7,10 @@ import { PROFILE } from '../resume';
 <header>
 	<nav>
 		<a class="brand" href="/">
+			<img src="/favicon.svg" alt="" width="28" height="28" />
 			<span>{SITE_TITLE}</span>
 		</a>
 		<div class="internal-links">
-			<a class="hide-sm" href="/#expertise">Expertise</a>
 			<a class="hide-sm" href="/#experience">Experience</a>
 			<a class="hide-sm" href="/#ai">AI workflows</a>
 			<HeaderLink href="/about">About</HeaderLink>
@@ -25,19 +25,17 @@ import { PROFILE } from '../resume';
 		z-index: 10;
 		margin: 0;
 		padding: 0 1em;
-		background: rgba(251, 250, 247, 0.9);
+		background: rgba(250, 249, 247, 0.85);
 		backdrop-filter: saturate(1.4) blur(10px);
 		-webkit-backdrop-filter: saturate(1.4) blur(10px);
-		border-bottom: 1px solid var(--rule);
+		border-bottom: 1px solid rgb(var(--gray-light));
 	}
 	nav {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		width: 1120px;
-		max-width: calc(100% - 1rem);
+		max-width: 1080px;
 		margin: 0 auto;
-		min-height: 4.5rem;
 	}
 	.brand {
 		display: flex;
@@ -47,8 +45,7 @@ import { PROFILE } from '../resume';
 		color: rgb(var(--black));
 		font-family: var(--serif);
 		font-weight: 500;
-		font-size: 1.45rem;
-		letter-spacing: 0.01em;
+		font-size: 1.05em;
 		text-decoration: none;
 	}
 	.brand img {
@@ -60,9 +57,9 @@ import { PROFILE } from '../resume';
 		gap: 0.25em;
 	}
 	nav .internal-links a.resume-btn {
-		margin-left: 1rem;
-		padding: 0.85rem 1.4rem;
-		font-size: 0.68rem;
+		margin-left: 0.8em;
+		padding: 0.7em 1.4em;
+		font-size: 0.68em;
 		letter-spacing: 0.18em;
 		text-transform: uppercase;
 		border: 0;
@@ -76,14 +73,11 @@ import { PROFILE } from '../resume';
 		color: #fff;
 	}
 	nav .internal-links a {
-		padding: 1.6rem 0.85rem;
+		padding: 1em 0.6em;
 		color: rgb(var(--gray-dark));
-		border-bottom: 1px solid transparent;
+		border-bottom: 3px solid transparent;
 		text-decoration: none;
-		font-size: 0.7rem;
-		font-weight: 500;
-		letter-spacing: 0.16em;
-		text-transform: uppercase;
+		font-size: 0.9em;
 	}
 	nav .internal-links a:hover {
 		color: var(--accent);
@@ -93,17 +87,17 @@ import { PROFILE } from '../resume';
 		text-decoration: none;
 		border-bottom-color: var(--accent);
 	}
-	@media (max-width: 760px) {
+	@media (max-width: 640px) {
 		.hide-sm {
 			display: none;
 		}
 	}
 	@media (max-width: 520px) {
-		.brand {
-			font-size: 1.25rem;
+		.brand span {
+			font-size: 0.95em;
 		}
 		nav .internal-links a {
-			padding: 1.4rem 0.5rem;
+			padding: 1em 0.4em;
 		}
 	}
 </style>

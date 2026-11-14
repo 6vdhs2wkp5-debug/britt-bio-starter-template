@@ -20,9 +20,6 @@
 	--gray-light: 226, 224, 219;
 	--gray-dark: 36, 46, 63;
 	--gray-gradient: #eceae6, #faf9f7;
-	--paper: #fbfaf7; /* page background */
-	--panel: #f2efe9; /* quiet section background */
-	--rule: #dcd6cc; /* hairlines */
 	--serif: "Cormorant Garamond Variable", "Cormorant Garamond", Georgia, serif;
 	--sans: "Inter Variable", "Inter", -apple-system, "Segoe UI", sans-serif;
 	--box-shadow:
@@ -37,7 +34,8 @@ body {
 	margin: 0;
 	padding: 0;
 	text-align: left;
-	background: var(--paper);
+	background: #faf9f7 linear-gradient(var(--gray-gradient)) no-repeat;
+	background-size: 100% 600px;
 	word-wrap: break-word;
 	overflow-wrap: break-word;
 	color: rgb(var(--gray-dark));

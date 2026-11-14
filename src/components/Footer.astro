@@ -2,83 +2,66 @@
 import { SITE_TITLE } from '../consts';
 import { PROFILE, BOOK_CALL } from '../resume';
 const today = new Date();
-const bookAttrs = BOOK_CALL.external ? { target: '_blank', rel: 'noopener' } : {};
 ---
 
 <footer>
+	<svg class="skyline" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true">
+		<path
+			d="M0 60 V44 Q90 26 180 40 T360 34 L380 34 V20 H392 V34 L470 36 Q560 22 640 38 L660 38 L668 6 L676 38 L720 38 V26 H736 V38 H760 V18 H778 V38 L840 40 Q960 20 1060 36 T1200 32 V60 Z"
+		></path>
+	</svg>
 	<div class="inner">
-		<div class="brand">
-			<p class="name">{SITE_TITLE}</p>
-			<p class="sub">Executive Assistant &amp; Office Manager · San Francisco</p>
-		</div>
-		<nav class="links" aria-label="Contact">
-			<a href={BOOK_CALL.href} {...bookAttrs}>Book a call</a>
+		<p class="made">Based in San Francisco, California</p>
+		<p class="links">
+			<a href={BOOK_CALL.href} target={BOOK_CALL.external ? '_blank' : undefined} rel={BOOK_CALL.external ? 'noopener' : undefined}>Book a call</a>
 			<a href={`mailto:${PROFILE.email}`}>Email</a>
 			<a href={PROFILE.linkedin} target="_blank" rel="noopener">LinkedIn</a>
 			<a href={PROFILE.resume} target="_blank" rel="noopener">Resume</a>
-		</nav>
+		</p>
+		<p class="copy">&copy; {today.getFullYear()} {SITE_TITLE}</p>
 	</div>
-	<p class="copy">&copy; {today.getFullYear()} {SITE_TITLE}</p>
 </footer>
 <style>
 	footer {
-		background: var(--ink-dark);
-		color: rgba(255, 255, 255, 0.7);
-		padding: 3.5rem 0 2rem;
+		margin-top: 4em;
+		color: rgba(255, 255, 255, 0.82);
+		text-align: center;
 	}
-	.inner,
-	.copy {
-		width: 1120px;
-		max-width: calc(100% - 3rem);
-		margin: 0 auto;
+	.skyline {
+		display: block;
+		width: 100%;
+		height: 48px;
+		fill: var(--ink);
 	}
 	.inner {
-		display: flex;
-		flex-wrap: wrap;
-		align-items: flex-end;
-		justify-content: space-between;
-		gap: 1.5rem 3rem;
-		padding-bottom: 2rem;
-		border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+		background: var(--ink);
+		padding: 1.5em 1em 3em;
 	}
-	.name {
-		margin: 0;
+	.made {
+		margin: 0 0 0.25em;
 		font-family: var(--serif);
-		font-size: 1.6rem;
-		line-height: 1.2;
+		font-size: 1.05em;
 		color: #fff;
-	}
-	.sub {
-		margin: 0.35rem 0 0;
-		font-size: 0.82rem;
-		letter-spacing: 0.02em;
 	}
 	.links {
 		display: flex;
-		flex-wrap: wrap;
-		gap: 0.5rem 2rem;
+		justify-content: center;
+		gap: 1.4em;
+		margin: 0.8em 0;
+		font-size: 0.85em;
+		font-weight: 500;
 	}
 	.links a {
-		font-size: 0.7rem;
-		font-weight: 500;
-		letter-spacing: 0.18em;
-		text-transform: uppercase;
 		color: #fff;
 		text-decoration: none;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.35);
 	}
 	.links a:hover {
 		color: var(--champagne);
 	}
 	.copy {
-		margin-top: 1.5rem;
-		margin-bottom: 0;
-		font-size: 0.75rem;
+		margin: 0;
+		font-size: 0.8em;
 		letter-spacing: 0.04em;
-	}
-	@media (max-width: 640px) {
-		.inner,
-		.copy {
-			max-width: calc(100% - 2.5rem);
-		}
 	}
 </style>
